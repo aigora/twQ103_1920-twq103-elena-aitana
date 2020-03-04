@@ -1,4 +1,4 @@
-# Título del trabajo
+# Tienda Virtual de productos químicos
 
 Descripción breve del proyecto a realizar (2-3 frases).
 
