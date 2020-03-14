@@ -1,6 +1,6 @@
 # Tienda Virtual de productos químicos
 
-Descripción breve del proyecto a realizar (2-3 frases).
+Venta virtual de productos químicos mediante un menú en el que se muestran las opciones de: registro del cliente, stock disponible y venta de los produtos.
 
 ## Integrantes del equipo
 
