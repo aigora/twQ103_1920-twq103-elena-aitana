@@ -1,4 +1,4 @@
-# Tienda Virtual de productos químicos
+# EtsidiChemistLab
 
 Venta virtual de productos químicos.
 
