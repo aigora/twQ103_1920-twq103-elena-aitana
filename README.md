@@ -1,6 +1,6 @@
 # Tienda Virtual de productos químicos
 
-Venta virtual de productos químicos mediante un menú en el que se muestran las opciones de: registro del cliente, stock disponible y venta de los produtos.
+Venta virtual de productos químicos.
 
 ## Integrantes del equipo
 
@@ -10,4 +10,6 @@ y Alexandra Ramírez Ángel (Alexandraman).
 
 ## Objetivos del trabajo
 
-Lista de los objetivos que se persiguen con el trabajo propuesto.
+- Registro de clientes
+- Mostrar el stock de productos disponibles
+- Venta de productos
