@@ -84,12 +84,63 @@ int main(){
 	return 0;
 }
 
-/*void RegistroOperador(struct Operador){
-	int i;
+	/*FILE *f, *pfichero1, *pfichero2, *pfichero3, *pfichero4;
+	char x,y;
+	int quimico;
+	f = fopen("quimicos.txt", "r");
 	
-	printf("Introduce tu nombre: ");
-	scanf("%s", Registro[i].nombre);
-	printf("Introduce tu apellidos: ");
-	scanf("%s", Registro[i].apellidos);
+	if ( f == NULL) {
+		printf("No se encuentra el fichero\n");
+		return 0;
+	}
+	printf("A continuacion le mostramos la lista de productos: \n");
+	while(fscanf(f, "%c", &x) != EOF){
+		printf("%c", x);
+
+	}
+	printf("\n");
 	
-}*/
+	fclose(f);
+	printf("\n");
+	do {
+	
+  	printf("Escoja uno de ellos: \n");
+	scanf("%d", &quimico); 
+	switch (quimico){
+		
+		case 1: printf("Acido clorhidrico\n"); 
+		pfichero1 = fopen("acidoclorhidrico.txt", "r");
+		while(fscanf(pfichero1, "%c", &x )!= EOF){
+	         printf("%c", x);}
+	         fclose(pfichero1);
+			break;
+		case 2: printf("Hidroxido de Sodio\n");
+		pfichero2 = fopen("hidroxidodesodio.txt", "r");
+		while(fscanf(pfichero2, "%c", &x )!= EOF){
+	         printf("%c", x);}
+	         fclose(pfichero2);
+			break;
+		case 3: printf("Acido sulfurico\n");
+		pfichero3 = fopen("acidosulfurico.txt", "r");
+		while(fscanf(pfichero3, "%c", &x )!= EOF){
+	         printf("%c", x);}
+	         fclose(pfichero3);
+			break;
+		case 4: printf("Acido nitrico\n"); 
+			pfichero4 = fopen("acidonitrico.txt", "r");
+			while(fscanf(pfichero4, "%c", &x )!= EOF){
+	         printf("%c", x);}
+	         fclose(pfichero4);break;
+	    default: printf("Opcion incorrecta. Introduzcala otra vez\n");
+		}
+		
+	}
+	    
+		while( quimico < 1 || quimico > 4);
+		
+
+	
+	
+	
+		return 0;
+	}*/
