@@ -18,15 +18,16 @@ struct Registro{
 };
 
 //FUNCIONES
-void registroCliente(struct Registro);
+void registroCliente(struct Registro cliente);
 
-void registroOperador(struct Registro);
+void registroOperador(struct Registro operador);
 
 int main(){
 	char tipoUsuario;
 	char opcion;
 	int claveAcceso=1234, clave;
-	struct Registro operador;
+	struct Registro oper;
+	struct Registro client;
 	
 	printf("                            Bienvenido/a a ETSIDICHEMISTLAB\n");
 	printf("Tu tienda online donde podras encontrar el producto quimico que tanto tiempo has estado buscando\n");
@@ -61,17 +62,7 @@ int main(){
 						switch (opcion) {
 						case 'r':
 						case 'R':
-							//registroOperador (&operador); No me funciona bien....????
-							//Prueba para ver si compila bien
-							fflush(stdin);
-							printf("Nombre: ");
-							scanf("%s", operador.nombre);
-							fflush(stdin);
-							printf("Apellidos: ");
-							scanf("%s", operador.apellidos);
-							fflush(stdin);
-							printf("Contrasena: ");
-							scanf("%s", operador.contrasena);
+							registroOperador (oper); 
 							break;
 						case 'a':
 						case 'A':
@@ -98,6 +89,7 @@ int main(){
 				case 'r':
 				case 'R':
 					//Funcion del registro de un cliente
+					registroCliente (client);
 					break;
 				case 'a':
 				case 'A':
@@ -122,8 +114,10 @@ int main(){
 	return 0;
 }
 
-/*void registroOperador(struct Registro){
+//Cuerpo de la funcion del registro del operador
+void registroOperador(struct Registro operador){
 	struct Registro operador;
+	struct Registro oper;
 	fflush(stdin);
 	printf("Nombre: ");
 	scanf("%s", operador.nombre);
@@ -155,10 +149,47 @@ int main(){
 	printf("Numero de cuenta: ");
 	scanf("%d", &operador.numeroCuenta);
 	
-	
-}*/
+}
 
-	/*FILE *f, *pfichero1, *pfichero2, *pfichero3, *pfichero4;
+//Cuerpo de la funcion del registro del cliente
+void registroCliente(struct Registro cliente){
+	struct Registro client;
+	fflush(stdin);
+	printf("Nombre: ");
+	scanf("%s", cliente.nombre);
+	fflush(stdin);
+	printf("Apellidos: ");
+	scanf("%s", cliente.apellidos);
+	fflush(stdin);
+	printf("Contrasena: ");
+	scanf("%s", cliente.contrasena);
+	fflush(stdin);
+	printf("DNI: ");
+	scanf("%s", cliente.dni);
+	fflush(stdin);
+	printf("Email: ");
+	scanf("%s", cliente.email);
+	fflush(stdin);
+	printf("Sexo (masculino o femenino): ");
+	scanf("%s", cliente.sexo);
+	fflush(stdin);
+	printf("Localidad: ");
+	scanf("%s", cliente.localidad);
+	
+	printf("Dia-Mes-Ano de nacimiento: ");
+	scanf("%d %d %d", &cliente.fechaNacimiento.dia, &cliente.fechaNacimiento.mes, &cliente.fechaNacimiento.annyo);
+
+	printf("Telefono: ");
+	scanf("%d", &cliente.tlf);
+
+	printf("Numero de cuenta: ");
+	scanf("%d", &cliente.numeroCuenta);
+	
+}
+
+
+// Poner estos ficheros en una funcion de productos
+/*FILE *f, *pfichero1, *pfichero2, *pfichero3, *pfichero4;
 	char x,y;
 	int quimico;
 	f = fopen("quimicos.txt", "r");
@@ -170,51 +201,43 @@ int main(){
 	printf("A continuacion le mostramos la lista de productos: \n");
 	while(fscanf(f, "%c", &x) != EOF){
 		printf("%c", x);
-
 	}
 	printf("\n");
 	
 	fclose(f);
 	printf("\n");
 	do {
-	
-  	printf("Escoja uno de ellos: \n");
-	scanf("%d", &quimico); 
-	switch (quimico){
-		
-		case 1: printf("Acido clorhidrico\n"); 
-		pfichero1 = fopen("acidoclorhidrico.txt", "r");
-		while(fscanf(pfichero1, "%c", &x )!= EOF){
-	         printf("%c", x);}
-	         fclose(pfichero1);
-			break;
-		case 2: printf("Hidroxido de Sodio\n");
-		pfichero2 = fopen("hidroxidodesodio.txt", "r");
-		while(fscanf(pfichero2, "%c", &x )!= EOF){
-	         printf("%c", x);}
-	         fclose(pfichero2);
-			break;
-		case 3: printf("Acido sulfurico\n");
-		pfichero3 = fopen("acidosulfurico.txt", "r");
-		while(fscanf(pfichero3, "%c", &x )!= EOF){
-	         printf("%c", x);}
-	         fclose(pfichero3);
-			break;
-		case 4: printf("Acido nitrico\n"); 
-			pfichero4 = fopen("acidonitrico.txt", "r");
-			while(fscanf(pfichero4, "%c", &x )!= EOF){
-	         printf("%c", x);}
-	         fclose(pfichero4);break;
-	    default: printf("Opcion incorrecta. Introduzcala otra vez\n");
+		printf("Escoja uno de ellos: \n");
+		scanf("%d", &quimico); 
+		switch (quimico){
+			
+			case 1: printf("Acido clorhidrico\n"); 
+			pfichero1 = fopen("acidoclorhidrico.txt", "r");
+			while(fscanf(pfichero1, "%c", &x )!= EOF){
+		         printf("%c", x);}
+		         fclose(pfichero1);
+				break;
+			case 2: printf("Hidroxido de Sodio\n");
+			pfichero2 = fopen("hidroxidodesodio.txt", "r");
+			while(fscanf(pfichero2, "%c", &x )!= EOF){
+		         printf("%c", x);}
+		         fclose(pfichero2);
+				break;
+			case 3: printf("Acido sulfurico\n");
+			pfichero3 = fopen("acidosulfurico.txt", "r");
+			while(fscanf(pfichero3, "%c", &x )!= EOF){
+		         printf("%c", x);}
+		         fclose(pfichero3);
+				break;
+			case 4: printf("Acido nitrico\n"); 
+				pfichero4 = fopen("acidonitrico.txt", "r");
+				while(fscanf(pfichero4, "%c", &x )!= EOF){
+		         printf("%c", x);}
+		         fclose(pfichero4);break;
+		    default: printf("Opcion incorrecta. Introduzcala otra vez\n");
 		}
 		
-	}
-	    
-		while( quimico < 1 || quimico > 4);
-		
-
-	
-	
-	
-		return 0;
-	}*/
+	}while( quimico < 1 || quimico > 4);
+			
+	return 0;
+*/
