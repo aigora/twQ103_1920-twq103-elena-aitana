@@ -1,0 +1,14 @@
+- Formula: HCl
+- Peso molecular: 36,5 kg/kmol
+- Concentración:35%
+- Capacidad: 25 L
+- Peso bombona: 27 Kg
+- Descripcion: El Ácido Clorhídrico (HCl), también llamado Salfumán.
+  Es un ácido fuerte y corrosivo que se obtiene de disolver cloruro de 
+  hidrógeno en agua a diversas concentraciones. Es un desincrustante de 
+  la suciedad y la cal.
+- Indicaciones: Es un producto que precisa de un uso controlado ya que 
+  desprende vapores irritantes por lo que debería evitarse su uso en locales 
+  cerrados o en lugares con mala ventilación. Y por lo que recomendamos la 
+  lectura de la ficha de seguridad para realizar un buen uso de éste producto.
+- Precio:30 euros
