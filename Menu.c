@@ -22,12 +22,18 @@ void registroCliente(struct Registro cliente);
 
 void registroOperador(struct Registro operador);
 
+//void ListaProductos ();
+
 int main(){
 	char tipoUsuario;
 	char opcion;
 	int claveAcceso=1234, clave;
 	struct Registro oper;
 	struct Registro client;
+	FILE *f, *pfichero1, *pfichero2, *pfichero3, *pfichero4;
+	char x,y;
+	int quimico;
+	
 	
 	printf("                            Bienvenido/a a ETSIDICHEMISTLAB\n");
 	printf("Tu tienda online donde podras encontrar el producto quimico que tanto tiempo has estado buscando\n");
@@ -101,9 +107,54 @@ int main(){
 	}			
 	
 	else if (opcion == 2){
-		printf("Has entrado en el stock, que tipo de producto quieres?:\n");
-		//Aqui tendremos que poner los ficheros de los productos (llamada a las funciones correspondientes)
+		printf("Has entrado en el stock. Elija el producto:\n");
 		
+		f = fopen("quimicos.txt", "r");
+		
+		if ( f == NULL) {
+			printf("No se encuentra el fichero\n");
+			return 0;
+		}
+		printf("A continuacion le mostramos la lista de productos: \n");
+		while(fscanf(f, "%c", &x) != EOF){
+			printf("%c", x);
+		}
+		printf("\n");
+		
+		fclose(f);
+		printf("\n");
+		do {
+			printf("Escoja uno de ellos: \n");
+			scanf("%d", &quimico); 
+			switch (quimico){
+				
+				case 1: printf("Acido clorhidrico\n"); 
+				pfichero1 = fopen("acidoclorhidrico.txt", "r");
+				while(fscanf(pfichero1, "%c", &x )!= EOF){
+			         printf("%c", x);}
+			         fclose(pfichero1);
+					break;
+				case 2: printf("Hidroxido de Sodio\n");
+				pfichero2 = fopen("hidroxidodesodio.txt", "r");
+				while(fscanf(pfichero2, "%c", &x )!= EOF){
+			         printf("%c", x);}
+			         fclose(pfichero2);
+					break;
+				case 3: printf("Acido sulfurico\n");
+				pfichero3 = fopen("acidosulfurico.txt", "r");
+				while(fscanf(pfichero3, "%c", &x )!= EOF){
+			         printf("%c", x);}
+			         fclose(pfichero3);
+					break;
+				case 4: printf("Acido nitrico\n"); 
+					pfichero4 = fopen("acidonitrico.txt", "r");
+					while(fscanf(pfichero4, "%c", &x )!= EOF){
+			         printf("%c", x);}
+			         fclose(pfichero4);break;
+			    default: printf("Opcion incorrecta. Introduzcala otra vez\n");
+			}
+			
+		}while( quimico < 1 || quimico > 4);
 	}
 	else {
 		printf("Has elegido acceder a la venta de productos\n");
@@ -116,7 +167,7 @@ int main(){
 
 //Cuerpo de la funcion del registro del operador
 void registroOperador(struct Registro operador){
-	struct Registro operador;
+
 	struct Registro oper;
 	fflush(stdin);
 	printf("Nombre: ");
@@ -186,58 +237,3 @@ void registroCliente(struct Registro cliente){
 	scanf("%d", &cliente.numeroCuenta);
 	
 }
-
-
-// Poner estos ficheros en una funcion de productos
-/*FILE *f, *pfichero1, *pfichero2, *pfichero3, *pfichero4;
-	char x,y;
-	int quimico;
-	f = fopen("quimicos.txt", "r");
-	
-	if ( f == NULL) {
-		printf("No se encuentra el fichero\n");
-		return 0;
-	}
-	printf("A continuacion le mostramos la lista de productos: \n");
-	while(fscanf(f, "%c", &x) != EOF){
-		printf("%c", x);
-	}
-	printf("\n");
-	
-	fclose(f);
-	printf("\n");
-	do {
-		printf("Escoja uno de ellos: \n");
-		scanf("%d", &quimico); 
-		switch (quimico){
-			
-			case 1: printf("Acido clorhidrico\n"); 
-			pfichero1 = fopen("acidoclorhidrico.txt", "r");
-			while(fscanf(pfichero1, "%c", &x )!= EOF){
-		         printf("%c", x);}
-		         fclose(pfichero1);
-				break;
-			case 2: printf("Hidroxido de Sodio\n");
-			pfichero2 = fopen("hidroxidodesodio.txt", "r");
-			while(fscanf(pfichero2, "%c", &x )!= EOF){
-		         printf("%c", x);}
-		         fclose(pfichero2);
-				break;
-			case 3: printf("Acido sulfurico\n");
-			pfichero3 = fopen("acidosulfurico.txt", "r");
-			while(fscanf(pfichero3, "%c", &x )!= EOF){
-		         printf("%c", x);}
-		         fclose(pfichero3);
-				break;
-			case 4: printf("Acido nitrico\n"); 
-				pfichero4 = fopen("acidonitrico.txt", "r");
-				while(fscanf(pfichero4, "%c", &x )!= EOF){
-		         printf("%c", x);}
-		         fclose(pfichero4);break;
-		    default: printf("Opcion incorrecta. Introduzcala otra vez\n");
-		}
-		
-	}while( quimico < 1 || quimico > 4);
-			
-	return 0;
-*/
