@@ -17,72 +17,146 @@ struct Registro{
 	struct TFecha fechaNacimiento;
 };
 
-void RegistroCliente(struct Registro);
+//FUNCIONES
+void registroCliente(struct Registro);
 
-void RegistroOperador(struct Operador);
+void registroOperador(struct Registro);
 
 int main(){
 	char tipoUsuario;
 	char opcion;
 	int claveAcceso=1234, clave;
+	struct Registro operador;
 	
 	printf("                            Bienvenido/a a ETSIDICHEMISTLAB\n");
 	printf("Tu tienda online donde podras encontrar el producto quimico que tanto tiempo has estado buscando\n");
 	
 	printf("A continuacion te mostramos el menu de opciones:\n");
+	printf("Elija donde quiere acceder: \n");
 	printf("1. Registro.\n");
 	printf("2. Stock.\n");
 	printf("3. Venta.\n");
-	scanf("%d", &opcion);			
-	printf("Por favor, indique si es operador o cliente, para ello pulse:\n");
-	printf("a) 'O' si es operador\n");
-	printf("b) 'C' si es cliente\n");
-	fflush(stdin);
-	scanf("%c", &tipoUsuario);
-	if (tipoUsuario == 'O' || tipoUsuario == 'o') {
-		do {
-			printf("Antes de acceder, introduzca la clave de acceso que le hayan asignado: "); //La clave debe ser 1234
-			scanf("%d", &clave);
-			if (clave == 1234) {
-				printf("Acceso concedido\n");
-				printf("\n");
-				do {
-					printf("¿Que desea realizar?\n");
-					printf("a) Introduzca r para registrarte\n");
-					printf("b) Introduzca a para acceder\n");
-					printf("c) Introduzca s para salir\n");
-					getchar();
-					scanf("%c", &opcion);
-					system("cls");
-					switch (opcion) {
-					case 'r':
-					case 'R':
-						//Aqui pondriamos la funcion del registro del operador
-						printf("Introduce tu nombre:");
-						break;
-					case 'a':
-					case 'A':
-						//Aqui pondriamos la funcion del acceso del operador
-						break;
-					}
-				} while (opcion != 's');
-			}
-			else {
-				printf("Ha introducido mal la clave, vuelva a introducirla\n");
-			}
-		} while (clave != claveAcceso);
-	}
-	else if (tipoUsuario == 'C' || tipoUsuario == 'c'){
+	scanf("%d", &opcion);
+	if (opcion == 1){
+		printf("Por favor, indique si es operador o cliente, para ello pulse:\n");
+		printf("a) 'O' si es operador\n");
+		printf("b) 'C' si es cliente\n");
+		fflush(stdin);
+		scanf("%c", &tipoUsuario);
+		if (tipoUsuario == 'O' || tipoUsuario == 'o') {
+			do {
+				printf("Antes de acceder, introduzca la clave de acceso que le hayan asignado: "); //La clave debe ser 1234
+				scanf("%d", &clave);
+				if (clave == 1234) {
+					printf("Acceso concedido\n");
+					printf("\n");
+					do {
+						printf("¿Que desea realizar?\n");
+						printf("a) Introduzca r para registrarte\n");
+						printf("b) Introduzca a para acceder\n");
+						printf("c) Introduzca s para salir\n");
+						getchar();
+						scanf("%c", &opcion);
+						system("cls");
+						switch (opcion) {
+						case 'r':
+						case 'R':
+							//registroOperador (&operador); No me funciona bien....????
+							//Prueba para ver si compila bien
+							fflush(stdin);
+							printf("Nombre: ");
+							scanf("%s", operador.nombre);
+							fflush(stdin);
+							printf("Apellidos: ");
+							scanf("%s", operador.apellidos);
+							fflush(stdin);
+							printf("Contrasena: ");
+							scanf("%s", operador.contrasena);
+							break;
+						case 'a':
+						case 'A':
+							//Aqui pondriamos la funcion del acceso del operador
+							break;
+						}
+					} while (opcion != 's');
+				}
+				else {
+					printf("Ha introducido mal la clave, vuelva a introducirla\n");
+				}
+			} while (clave != claveAcceso);
+		}
+		else if (tipoUsuario == 'C' || tipoUsuario == 'c'){
+			do {
+				printf("¿Que desea realizar?:\n");
+				printf("a) Introduzca r para registrarte\n");
+				printf("b) Introduzca a para acceder\n");
+				printf("c) Introduzca s si quieres salir\n");
+				getchar();
+				scanf("%c", &opcion);
+				system("cls");
+				switch (opcion) {
+				case 'r':
+				case 'R':
+					//Funcion del registro de un cliente
+					break;
+				case 'a':
+				case 'A':
+					//Funcion del acceso del cliente
+					break;
+				}
+			} while (opcion != 's');
+		}
+	}			
+	
+	else if (opcion == 2){
+		printf("Has entrado en el stock, que tipo de producto quieres?:\n");
+		//Aqui tendremos que poner los ficheros de los productos (llamada a las funciones correspondientes)
 		
 	}
-	if (opcion == 2){
-		printf("Has entrado en el stock, que tipo de producto quieres?");
+	else {
+		printf("Has elegido acceder a la venta de productos\n");
+		//Aqui estaran las ventas, facturas y demas (llamada a las funciones correspondientes)
 	}
-	
 				
 
 	return 0;
 }
+
+/*void registroOperador(struct Registro){
+	struct Registro operador;
+	fflush(stdin);
+	printf("Nombre: ");
+	scanf("%s", operador.nombre);
+	fflush(stdin);
+	printf("Apellidos: ");
+	scanf("%s", operador.apellidos);
+	fflush(stdin);
+	printf("Contrasena: ");
+	scanf("%s", operador.contrasena);
+	fflush(stdin);
+	printf("DNI: ");
+	scanf("%s", operador.dni);
+	fflush(stdin);
+	printf("Email: ");
+	scanf("%s", operador.email);
+	fflush(stdin);
+	printf("Sexo (masculino o femenino): ");
+	scanf("%s", operador.sexo);
+	fflush(stdin);
+	printf("Localidad: ");
+	scanf("%s", operador.localidad);
+	
+	printf("Dia-Mes-Ano de nacimiento: ");
+	scanf("%d %d %d", &operador.fechaNacimiento.dia, &operador.fechaNacimiento.mes, &operador.fechaNacimiento.annyo);
+
+	printf("Telefono: ");
+	scanf("%d", &operador.tlf);
+
+	printf("Numero de cuenta: ");
+	scanf("%d", &operador.numeroCuenta);
+	
+	
+}*/
 
 	/*FILE *f, *pfichero1, *pfichero2, *pfichero3, *pfichero4;
 	char x,y;
