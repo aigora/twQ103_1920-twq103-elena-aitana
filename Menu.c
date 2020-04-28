@@ -17,6 +17,12 @@ struct Registro{
 	struct TFecha fechaNacimiento;
 };
 
+struct TProducto{
+	int codigo;
+	int cantidad;
+	int stock;
+};
+
 //FUNCIONES
 void registroCliente(struct Registro cliente);
 
@@ -54,7 +60,7 @@ int main(){
 			do {
 				printf("Antes de acceder, introduzca la clave de acceso que le hayan asignado: "); //La clave debe ser 1234
 				scanf("%d", &clave);
-				if (clave == 1234) {
+				if (strcmp(claveAcceso,clave) == 0) {
 					printf("Acceso concedido\n");
 					printf("\n");
 					do {
@@ -235,5 +241,8 @@ void registroCliente(struct Registro cliente){
 
 	printf("Numero de cuenta: ");
 	scanf("%d", &cliente.numeroCuenta);
+	
+	struct TProducto pedido[5];
+	int numero =0; //hacer dia 29 abril vector de estructuras
 	
 }
