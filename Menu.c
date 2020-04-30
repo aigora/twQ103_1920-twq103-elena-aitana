@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+// Dia 29 Abril 
 
 struct TFecha {
 	int dia;
@@ -18,9 +19,8 @@ struct Registro{
 };
 
 struct TProducto{
-	int codigo;
+	char codigo[10];
 	int cantidad;
-	int stock;
 };
 
 //FUNCIONES
@@ -28,18 +28,21 @@ void registroCliente(struct Registro cliente);
 
 void registroOperador(struct Registro operador);
 
+void compraProducto (struct Tproducto pedido);
 //void ListaProductos ();
 
 int main(){
 	char tipoUsuario;
-	char opcion;
-	int claveAcceso=1234, clave;
+	char opcion, opcion2;
+	int codigo, i,unidad, cantidadFinal = 0;
+	char aux[10];
+	char claveAcceso[10] = {"1234"}, clave[10];
 	struct Registro oper;
 	struct Registro client;
 	FILE *f, *pfichero1, *pfichero2, *pfichero3, *pfichero4;
 	char x,y;
 	int quimico;
-	
+	struct TProducto pedido[5] = {{"1", 10}, {"2", 20}, {"3", 30}, {"4", 40}, {"5", 50}};
 	
 	printf("                            Bienvenido/a a ETSIDICHEMISTLAB\n");
 	printf("Tu tienda online donde podras encontrar el producto quimico que tanto tiempo has estado buscando\n");
@@ -59,15 +62,16 @@ int main(){
 		if (tipoUsuario == 'O' || tipoUsuario == 'o') {
 			do {
 				printf("Antes de acceder, introduzca la clave de acceso que le hayan asignado: "); //La clave debe ser 1234
-				scanf("%d", &clave);
-				if (strcmp(claveAcceso,clave) == 0) {
+				fflush(stdin);
+				scanf("%s", &clave);
+				if (strcmp(clave, claveAcceso) == 0) {
 					printf("Acceso concedido\n");
 					printf("\n");
 					do {
 						printf("¿Que desea realizar?\n");
 						printf("a) Introduzca r para registrarte\n");
 						printf("b) Introduzca a para acceder\n");
-						printf("c) Introduzca s para salir\n");
+						printf("c) Introduzca s para salir\n"); //PREGUNTAR COMO SALIR DEL PROGRAMA!!
 						getchar();
 						scanf("%c", &opcion);
 						system("cls");
@@ -79,6 +83,30 @@ int main(){
 						case 'a':
 						case 'A':
 							//Aqui pondriamos la funcion del acceso del operador
+							printf("Bienvenido al stock\n");
+							printf("Quiere consultar el stock? (S/Cualquier letra):\n");
+							fflush(stdin);
+							scanf("%c", &opcion2);
+							if (opcion2 == 'S' || opcion2 == 's'){
+								f = fopen("quimicos.txt", "r");
+								if ( f == NULL) {
+									printf("No se encuentra el fichero\n");
+									return 0;
+								}
+								printf("A continuacion le mostramos la lista de productos: \n");
+								while(fscanf(f, "%c", &x) != EOF){
+									printf("%c", x);
+								}
+								printf("\n");
+								
+								fclose(f);
+							}else {
+								printf("Hasta pronto.\n");
+							}
+							break;
+						case 's':
+						case 'S': 
+							printf("Hasta luego\n");
 							break;
 						}
 					} while (opcion != 's');
@@ -164,16 +192,54 @@ int main(){
 	}
 	else {
 		printf("Has elegido acceder a la venta de productos\n");
-		//Aqui estaran las ventas, facturas y demas (llamada a las funciones correspondientes)
-	}
+		do{
+			printf("Introduzca el codigo del producto que quiere comprar:\n");
+			fflush(stdin);
+			scanf("%s", aux);
+			for (i=0; i<5; i++){
+				if (strcmp (pedido[i].codigo, aux) == 0){
 				
+					printf("Cuantas unidades quiere?:\n");
+					scanf("%d", &unidad);
+					if (unidad >=1 && unidad < pedido[i].cantidad){
+						cantidadFinal = pedido[i].cantidad - unidad; //Se habra guardado la nueva cantidad de unidades del producto 1
+						printf("La cantidad final del producto es %d\n", cantidadFinal);
+					}else {
+						printf("No hay suficiente stock\n");
+						break;
+					}		
+				}else if (strcmp (pedido[i].codigo, aux) == 1)) {
+					printf("El codigo es incorrecto\n");
+				}
+			}
+			//printf("La cantidad final del producto %c es %d", pedido[i].codigo, cantidadFinal);
+			}while (aux <1 || aux >= 5);
+		
+			/*for (i=0; i<5; i++){
+				if (strcmp (pedido[i].codigo, aux) == 0){
+					
+					printf("Cuantas unidades quiere?:\n");
+					scanf("%d", &unidad);
+					if (unidad >=1 && unidad < pedido[i].cantidad){
+						cantidadFinal = pedido[i].cantidad - unidad; //Se habra guardado la nueva cantidad de unidades del producto 1
+						printf("La cantidad final del producto es %d\n", cantidadFinal);
+					}else {
+						printf("No hay suficiente stock\n");
+						break;
+					}		
+				}else {
+					printf("El codigo es incorrecto\n");
+			}
+		}*/
+		//printf("La cantidad final del producto %c es %d", pedido[i].codigo, cantidadFinal);
+	}
 
 	return 0;
 }
 
 //Cuerpo de la funcion del registro del operador
 void registroOperador(struct Registro operador){
-
+	
 	struct Registro oper;
 	fflush(stdin);
 	printf("Nombre: ");
@@ -246,3 +312,18 @@ void registroCliente(struct Registro cliente){
 	int numero =0; //hacer dia 29 abril vector de estructuras
 	
 }
+
+/*void compraProducto (struct Tproducto pedido[]){
+	int aux;
+	int numero =0;
+	int i;
+	
+	printf("Introduzca el codigo del producto que quiere comprar:\n");
+	scanf("%d", &aux);
+	
+	for (i=0; i<5; i++){
+		if (strcmp (aux, pedido[i].))
+	}
+	
+}*/
+
