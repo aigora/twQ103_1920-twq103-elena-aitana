@@ -194,9 +194,12 @@ int main(){
 	}
 	else {
 		printf("Has elegido acceder a la venta de productos\n");
-		        if(opcion == 3) {
-		        	compraProducto(pedido1);
-				}
+		printf("Registrese para acceder\n");
+		registroCliente (client);
+		
+		        /*if(opcion == 3) {
+		    	compraProducto(pedido1);
+				}*/
 		
                    		  
 		  
@@ -285,44 +288,63 @@ void registroOperador(struct Registro operador){
 
 //Cuerpo de la funcion del registro del cliente
 void registroCliente(struct Registro cliente){
-	struct Registro client;
+	struct Registro client[100];
+	int i;
+	/*FILE *f1;
+	int i, dimension;
+	f1 = fopen ("datosdelcliente.txt", "r");
+	fscanf(f1, "%d\n", &dimension);
+	for (i=0; i<dimension; i++){
+		fscanf(f1, "%s %s %s %s %s %s %s %d %d %s %s %d %d %d %d %d\n", client[i].nombre, client[i].apellidos, client[i].contrasena, client[i].dni, client[i].email, client[i].sexo, client[i].calle, &client[i].portal, &client[i].piso, client[i].puerta, client[i].localidad, &client[i].fechaNacimiento[i].dia, &client[i].fechaNacimiento[i].mes, &client[i].fechaNacimiento[i].annyo, &client[i].tlf, &client[i].numeroCuenta);
+	}
+	fclose (f1);*/
+	
 	fflush(stdin);
 	printf("Nombre: ");
-	scanf("%s", cliente.nombre);
+	scanf("%s", client[i].nombre);
 	fflush(stdin);
 	printf("Apellidos: ");
-	scanf("%s", cliente.apellidos);
+	scanf("%s", client[i].apellidos);
 	fflush(stdin);
 	printf("Contrasena: ");
-	scanf("%s", cliente.contrasena);
+	scanf("%s", client[i].contrasena);
 	fflush(stdin);
 	printf("DNI: ");
-	scanf("%s", cliente.dni);
+	scanf("%s", client[i].dni);
 	fflush(stdin);
 	printf("Email: ");
-	scanf("%s", cliente.email);
+	scanf("%s", client[i].email);
 	fflush(stdin);
 	printf("Sexo (masculino o femenino): ");
-	scanf("%s", cliente.sexo);
+	scanf("%s", client[i].sexo);
+	fflush(stdin);
+	printf("Calle-Portal-Piso-Puerta:\n");
+	scanf("%s %d %d %s", client[i].calle, &client[i].portal, &client[i].piso, client[i].puerta);
 	fflush(stdin);
 	printf("Localidad: ");
-	scanf("%s", cliente.localidad);
+	scanf("%s", client[i].localidad);
 	
 	printf("Dia-Mes-Ano de nacimiento: ");
-	scanf("%d %d %d", &cliente.fechaNacimiento.dia, &cliente.fechaNacimiento.mes, &cliente.fechaNacimiento.annyo);
+	scanf("%d %d %d", &client[i].fechaNacimiento.dia, &client[i].fechaNacimiento.mes, &client[i].fechaNacimiento.annyo);
 
 	printf("Telefono: ");
-	scanf("%d", &cliente.tlf);
+	scanf("%d", &client[i].tlf);
 
 	printf("Numero de cuenta: ");
-	scanf("%d", &cliente.numeroCuenta);
+	scanf("%d", &client[i].numeroCuenta);
+	//dimension = dimension + 1;
 	
-	struct TProducto pedido[5];
-	int numero =0; //hacer dia 29 abril vector de estructuras
+	/*f1 = fopen ("datosdelcliente.txt", "w");
+	fprintf(f1, "%d", dimension);
+	for (i=0; i<dimension; i++){
+		fprintf(f1, "%s %s %s %s %s %s %s %d %d %s %s %d %d %d %d %d\n", client[i].nombre, client[i].apellidos, client[i].contrasena, client[i].dni, client[i].email, client[i].sexo, client[i].calle, client[i].portal, client[i].piso, client[i].puerta, client[i].localidad, client[i].fechaNacimiento[i].dia, client[i].fechaNacimiento[i].mes, client[i].fechaNacimiento[i].annyo, client[i].tlf, client[i].numeroCuenta);
+	}
+	fclose (f1);*/
+	
 	
 }
 
-void compraProducto (struct TProducto pedido){ 
+/*void compraProducto (struct TProducto pedido){ 
 struct TProducto pedido1[5];
 	int aux;
 	int numero =0;
@@ -345,6 +367,6 @@ struct TProducto pedido1[5];
 						printf("No hay suficiente stock\n");
 						}
 	
-}
+}*/
 
 
