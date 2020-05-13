@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-// Dia 6 MAYO 
+// Dia 13 MAYO 
 
 struct TFecha {
 	int dia;
@@ -28,24 +28,25 @@ void registroCliente(struct Registro cliente);
 
 void registroOperador(struct Registro operador);
 
-void compraProducto (struct TProducto pedido[], int dimension, char codigo[]); //Pasar el vector de estructuras en elargumento
+void compraProducto (struct TProducto pedido[], int dimension); //Pasar el vector de estructuras en elargumento
 //void ListaProductos ();
 
 int main(){
 	
 	char tipoUsuario;
 	char opcion, opcion2;
-	int codigo, i,unidad, cantidadFinal = 0;
-	char aux[10];
+	int  i;
+	//char aux[10];
 	char claveAcceso[10] = {"1234"}, clave[10];
 	struct Registro oper;
 	struct Registro client;
 	FILE *f, *pfichero1, *pfichero2, *pfichero3, *pfichero4;
 	char x,y;
 	int quimico;
-	struct TProducto pedido[5] = {{"1", 10}, {"2", 20}, {"3", 30}, {"4", 40}, {"5", 50}};
+	struct TProducto pedido[5] = {{"AB", 10}, {"BC", 20}, {"CD", 30}, {"DE", 40}, {"EF", 50}};
 	int n;
 	int dimension = 5;
+	//char codigo[10];
 	printf("                            Bienvenido/a a ETSIDICHEMISTLAB\n");
 	printf("Tu tienda online donde podras encontrar el producto quimico que tanto tiempo has estado buscando\n");
 	
@@ -197,11 +198,11 @@ int main(){
 		printf("Registrese para acceder\n");
 		//registroCliente (client);
 		
-		compraProducto(pedido, dimension, codigo);
+		compraProducto(pedido, 5);
 				
 		
                    		  
-		  
+
 		//todo esto sobraria do{
 			//printf("Introduzca el codigo del producto que quiere comprar:\n");
 			//fflush(stdin);
@@ -343,28 +344,50 @@ void registroCliente(struct Registro cliente){
 	
 }
 
-void compraProducto (struct TProducto pedido[], int dimension, char codigo[]){ 
-	struct TProducto pedido1[5];
-	char aux[5];
-	int numero =0;
+void compraProducto (struct TProducto pedido[], int dimension){ 
+	//struct TProducto pedido1[5];
+	int numero = 0;
+	char codigo[10];
 	int i;
 	int unidad, cantidadFinal;
 	
+	/*fflush(stdin);
 	printf("Introduzca el codigo del producto que quiere comprar:\n");
-	scanf("%d", &aux);
+	scanf("%s", codigo);*/
 	
-	for (i=0; i<dimension; i++){ //strcmp
-		if (strcmp (aux[i], pedido1[i].codigo) == 0 ) {
-			printf("¿Cuántas unidades quieres?:\n");
-			scanf("%d", &pedido1[i].cantidad);
-		}
+	for (i=0; i<5; i++){ //strcmp
+		printf("Introduzca el codigo del producto que quiere comprar:\n");
+		scanf("%s", codigo);
+		if (strcmp (pedido[i].codigo, codigo) == 0 ) {
+			printf("¿Cuantas unidades quieres?:\n");
+			scanf("%d", &unidad);
+			if ((unidad >=1) && (unidad < pedido[i].cantidad)){
+				cantidadFinal = pedido[i].cantidad - unidad;
+				//break;
+				printf("La cantidad final del producto es %d\n", cantidadFinal);
+			}else{
+				printf("No hay suficiente stock\n");
+				break;
+		}			
+		}else {
+			printf("Codigo no encontrado:\n");
+			break;
+		}	
 	}
-	if (unidad >=1 && unidad < pedido1[i].cantidad){
-		cantidadFinal = pedido1[i].cantidad - unidad; //Se habra guardado la nueva cantidad de unidades del producto 1
-		printf("La cantidad final del producto es %d\n", cantidadFinal);
-	}else {
-		printf("No hay suficiente stock\n");
+	printf("La cantidad final del producto es %d\n", cantidadFinal);
+	/*printf("¿Cuantas unidades quieres?:\n");
+	scanf("%d", &unidad);*/
+
+	/*while ((unidad >=1) && (unidad < pedido[i].cantidad)){
+		cantidadFinal = pedido[i].cantidad - unidad;
 	}
+		//if ((unidad >=1) && (unidad < pedido1[i].cantidad)){
+		//cantidadFinal = pedido1[i].cantidad - unidad; //Se habra guardado la nueva cantidad de unidades del producto 1
+			
+		/*}else {
+	    	printf("No hay suficiente stock\n");
+		}*/
 	
+	//printf("La cantidad final del producto es %d\n", cantidadFinal);
 }
 
