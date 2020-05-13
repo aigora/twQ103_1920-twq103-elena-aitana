@@ -355,7 +355,7 @@ void compraProducto (struct TProducto pedido[], int dimension){
 	printf("Introduzca el codigo del producto que quiere comprar:\n");
 	scanf("%s", codigo);*/
 	
-	for (i=0; i<5; i++){ //strcmp
+/*for (i=0; i<5; i++){ //strcmp
 		printf("Introduzca el codigo del producto que quiere comprar:\n");
 		scanf("%s", codigo);
 		if (strcmp (pedido[i].codigo, codigo) == 0 ) {
@@ -374,7 +374,7 @@ void compraProducto (struct TProducto pedido[], int dimension){
 			break;
 		}	
 	}
-	printf("La cantidad final del producto es %d\n", cantidadFinal);
+	printf("La cantidad final del producto es %d\n", cantidadFinal);CLASE DE HOY QUE NOS HA SALIDO MAL*/
 	/*printf("¿Cuantas unidades quieres?:\n");
 	scanf("%d", &unidad);*/
 
@@ -389,5 +389,38 @@ void compraProducto (struct TProducto pedido[], int dimension){
 		}*/
 	
 	//printf("La cantidad final del producto es %d\n", cantidadFinal);
+	do{
+		printf("Introduzca el codigo del producto que quiere comprar:\n");
+		scanf("%s", codigobuscado);
+		for(i=0; i <5; i++){
+		
+		if (strcmp (pedido[i].codigo, codigobuscado) == 0 ) {
+			printf("¿Cuantas unidades quieres?:\n");
+			scanf("%d", &unidad);
+			fflush(stdin);
+			
+			if ((unidad >=1) && (unidad < pedido[i].cantidad)){
+				cantidadFinal = pedido[i].cantidad - unidad;
+				//break;
+				printf("La cantidad final del producto en el almacen es %d\n", cantidadFinal);
+			}else{
+				printf("No hay suficiente stock\n");}
+			}
+			else {
+				numero++;
+			}
+		
+			}
+	
+	if (numero == 5) {
+		printf("Has introducido un codigo erroneo\n");
+	}
+} while (numero ==5);
+	
+	
+	
+	
+	
+	
 }
 
