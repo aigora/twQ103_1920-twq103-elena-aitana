@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-// Dia 13 MAYO 
+// Dia 14 MAYO 
 
 struct TFecha {
 	int dia;
@@ -347,79 +347,38 @@ void registroCliente(struct Registro cliente){
 void compraProducto (struct TProducto pedido[], int dimension){ 
 	//struct TProducto pedido1[5];
 	int numero = 0;
-	char codigo[10];
+	char codigobuscado[10];
 	int i;
 	int unidad, cantidadFinal;
 	
-	/*fflush(stdin);
-	printf("Introduzca el codigo del producto que quiere comprar:\n");
-	scanf("%s", codigo);*/
-	
-/*for (i=0; i<5; i++){ //strcmp
-		printf("Introduzca el codigo del producto que quiere comprar:\n");
-		scanf("%s", codigo);
-		if (strcmp (pedido[i].codigo, codigo) == 0 ) {
-			printf("¿Cuantas unidades quieres?:\n");
-			scanf("%d", &unidad);
-			if ((unidad >=1) && (unidad < pedido[i].cantidad)){
-				cantidadFinal = pedido[i].cantidad - unidad;
-				//break;
-				printf("La cantidad final del producto es %d\n", cantidadFinal);
-			}else{
-				printf("No hay suficiente stock\n");
-				break;
-		}			
-		}else {
-			printf("Codigo no encontrado:\n");
-			break;
-		}	
-	}
-	printf("La cantidad final del producto es %d\n", cantidadFinal);CLASE DE HOY QUE NOS HA SALIDO MAL*/
-	/*printf("¿Cuantas unidades quieres?:\n");
-	scanf("%d", &unidad);*/
-
-	/*while ((unidad >=1) && (unidad < pedido[i].cantidad)){
-		cantidadFinal = pedido[i].cantidad - unidad;
-	}
-		//if ((unidad >=1) && (unidad < pedido1[i].cantidad)){
-		//cantidadFinal = pedido1[i].cantidad - unidad; //Se habra guardado la nueva cantidad de unidades del producto 1
-			
-		/*}else {
-	    	printf("No hay suficiente stock\n");
-		}*/
-	
-	//printf("La cantidad final del producto es %d\n", cantidadFinal);
 	do{
 		printf("Introduzca el codigo del producto que quiere comprar:\n");
 		scanf("%s", codigobuscado);
 		for(i=0; i <5; i++){
 		
-		if (strcmp (pedido[i].codigo, codigobuscado) == 0 ) {
-			printf("¿Cuantas unidades quieres?:\n");
-			scanf("%d", &unidad);
-			fflush(stdin);
+			if (strcmp (pedido[i].codigo, codigobuscado) == 0 ) {
+				printf("¿Cuantas unidades quieres?:\n");
+				scanf("%d", &unidad);
+				fflush(stdin);
 			
-			if ((unidad >=1) && (unidad < pedido[i].cantidad)){
-				cantidadFinal = pedido[i].cantidad - unidad;
+				if ((unidad >=1) && (unidad < pedido[i].cantidad)){
+					cantidadFinal = pedido[i].cantidad - unidad;
 				//break;
-				printf("La cantidad final del producto en el almacen es %d\n", cantidadFinal);
-			}else{
-				printf("No hay suficiente stock\n");}
+					printf("La cantidad final del producto en el almacen es %d\n", cantidadFinal);
+				}else{
+					printf("No hay suficiente stock\n");
+				}
 			}
 			else {
 				numero++;
 			}
 		
-			}
+		}
 	
-	if (numero == 5) {
-		printf("Has introducido un codigo erroneo\n");
-	}
-} while (numero ==5);
-	
-	
-	
-	
+		if (numero == 5) {
+			printf("Has introducido un codigo erroneo\n");
+		}
+	} while (numero ==5);
 	
 	
 }
