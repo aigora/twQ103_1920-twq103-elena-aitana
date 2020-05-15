@@ -21,6 +21,7 @@ struct Registro{
 struct TProducto{
 	char codigo[10];
 	int cantidad;
+	int precio;
 };
 
 //FUNCIONES
@@ -40,10 +41,10 @@ int main(){
 	char claveAcceso[10] = {"1234"}, clave[10];
 	struct Registro oper;
 	struct Registro client;
-	FILE *f, *pfichero1, *pfichero2, *pfichero3, *pfichero4;
+	FILE *f, *pfichero1, *pfichero2, *pfichero3, *pfichero4,*pfichero5;
 	char x,y;
 	int quimico;
-	struct TProducto pedido[5] = {{"AB", 10}, {"BC", 20}, {"CD", 30}, {"DE", 40}, {"EF", 50}};
+	struct TProducto pedido[5] = {{"AB", 10,30}, {"BC", 20,53}, {"CD", 30,27}, {"DE", 40,33}, {"EF", 50,86}};
 	int n;
 	int dimension = 5;
 	//char codigo[10];
@@ -187,11 +188,18 @@ int main(){
 					pfichero4 = fopen("acidonitrico.txt", "r");
 					while(fscanf(pfichero4, "%c", &x )!= EOF){
 			         printf("%c", x);}
-			         fclose(pfichero4);break;
+			         fclose(pfichero4);
+					 break;
+			    case 5: printf("Acido fosforico\n"); 
+					pfichero5 = fopen("acidofosforico.txt", "r");
+					while(fscanf(pfichero5, "%c", &x )!= EOF){
+			         printf("%c", x);}
+			         fclose(pfichero5);
+					 break;
 			    default: printf("Opcion incorrecta. Introduzcala otra vez\n");
 			}
 			
-		}while( quimico < 1 || quimico > 4);
+		}while( quimico < 1 || quimico > 5);
 	}
 	else {
 		printf("Has elegido acceder a la venta de productos\n");
@@ -364,7 +372,7 @@ void compraProducto (struct TProducto pedido[], int dimension){
 				if ((unidad >=1) && (unidad < pedido[i].cantidad)){
 					cantidadFinal = pedido[i].cantidad - unidad;
 					printf("La cantidad final del producto en el almacen es %d\n", cantidadFinal);
-					break;
+					printf("El precio del producto %d\n",pedido[i].precio)break;
 				}else{
 					printf("No hay suficiente stock\n");
 				}
@@ -381,4 +389,3 @@ void compraProducto (struct TProducto pedido[], int dimension){
 	
 	
 }
-
