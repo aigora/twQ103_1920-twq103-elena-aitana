@@ -363,22 +363,21 @@ void compraProducto (struct TProducto pedido[], int dimension){
 			
 				if ((unidad >=1) && (unidad < pedido[i].cantidad)){
 					cantidadFinal = pedido[i].cantidad - unidad;
-				//break;
 					printf("La cantidad final del producto en el almacen es %d\n", cantidadFinal);
+					break;
 				}else{
 					printf("No hay suficiente stock\n");
 				}
 			}
 			else {
 				numero++;
+					if (numero == 5) {
+			printf("Has introducido un codigo erroneo\n");
 			}
 		
 		}
-	
-		if (numero == 5) { //recorre el vector de estructuras hasta llegar a la posicion cinco que es el "EF"
-			printf("Has introducido un codigo erroneo\n");
 		}
-	} while (numero ==5);
+	} while(strcmp (pedido[i].codigo, codigobuscado) != 0 );
 	
 	
 }
