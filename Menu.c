@@ -207,51 +207,6 @@ int main(){
 		//registroCliente (client);
 		
 		compraProducto(pedido, 5);
-				
-		
-                   		  
-
-		//todo esto sobraria do{
-			//printf("Introduzca el codigo del producto que quiere comprar:\n");
-			//fflush(stdin);
-			//scanf("%s", aux);
-			
-				//aqui meteriamos la funcion compraproducto 
-				//if (strcmp (pedido[i].codigo, aux) == 0){
-				
-				//	printf("Cuantas unidades quiere?:\n");
-				//	scanf("%d", &unidad);
-				//	if (unidad >=1 && unidad < pedido[i].cantidad){
-					//	cantidadFinal = pedido[i].cantidad - unidad; //Se habra guardado la nueva cantidad de unidades del producto 1
-					//	printf("La cantidad final del producto es %d\n", cantidadFinal);
-				//	}else {
-					//	printf("No hay suficiente stock\n");
-					//	break;//esto sobraria
-				//	}		
-			//	}else if (strcmp (pedido[i].codigo, aux) == 1)) {
-				//	printf("El codigo es incorrecto\n");
-		//
-			
-			//printf("La cantidad final del producto %c es %d", pedido[i].codigo, cantidadFinal);
-			//}while (aux <1 || aux >= 5);
-		
-			/*for (i=0; i<5; i++){
-				if (strcmp (pedido[i].codigo, aux) == 0){
-					
-					printf("Cuantas unidades quiere?:\n");
-					scanf("%d", &unidad);
-					if (unidad >=1 && unidad < pedido[i].cantidad){
-						cantidadFinal = pedido[i].cantidad - unidad; //Se habra guardado la nueva cantidad de unidades del producto 1
-						printf("La cantidad final del producto es %d\n", cantidadFinal);
-					}else {
-						printf("No hay suficiente stock\n");
-						break;
-					}		
-				}else {
-					printf("El codigo es incorrecto\n");
-			}
-		}*/
-		//printf("La cantidad final del producto %c es %d", pedido[i].codigo, cantidadFinal);
 	}
 
 	return 0;
@@ -353,11 +308,12 @@ void registroCliente(struct Registro cliente){
 }
 
 void compraProducto (struct TProducto pedido[], int dimension){ 
-	//struct TProducto pedido1[5];
+	
 	int numero = 0;
 	char codigobuscado[10];
 	int i;
 	int unidad, cantidadFinal;
+	int precioFinal;
 	
 	do{
 		printf("Introduzca el codigo del producto que quiere comprar:\n");
@@ -372,7 +328,9 @@ void compraProducto (struct TProducto pedido[], int dimension){
 				if ((unidad >=1) && (unidad < pedido[i].cantidad)){
 					cantidadFinal = pedido[i].cantidad - unidad;
 					printf("La cantidad final del producto en el almacen es %d\n", cantidadFinal);
-					printf("El precio del producto %d\n",pedido[i].precio)break;
+					precioFinal = unidad * pedido[i].precio;
+					printf("El precio del producto %d euros\n", precioFinal);
+					break;
 				}else{
 					printf("No hay suficiente stock\n");
 				}
