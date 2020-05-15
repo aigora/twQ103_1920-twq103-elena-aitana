@@ -375,7 +375,7 @@ void compraProducto (struct TProducto pedido[], int dimension){
 		
 		}
 	
-		if (numero == 5) {
+		if (numero == 5) { //recorre el vector de estructuras hasta llegar a la posicion cinco que es el "EF"
 			printf("Has introducido un codigo erroneo\n");
 		}
 	} while (numero ==5);
