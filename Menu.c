@@ -124,9 +124,10 @@ int main(){
 			do {
 				printf("¿Que desea realizar?:\n");
 				printf("a) Introduzca r para registrarte\n");
-				printf("b) Introduzca a para acceder\n");
+				printf("b) Introduzca c para comprar\n");
 				printf("c) Introduzca s si quieres salir\n");
 				getchar();
+				fflush(stdin);
 				scanf("%c", &opcion);
 				system("cls");
 				switch (opcion) {
@@ -135,9 +136,10 @@ int main(){
 					//Funcion del registro de un cliente
 					registroCliente (client);
 					break;
-				case 'a':
-				case 'A':
-					//Funcion del acceso del cliente
+				case 'c':
+				case 'C':
+					//Funcion de la compra de un producto
+					compraProducto (pedido, 5);
 					break;
 				}
 			} while (opcion != 's');
@@ -207,6 +209,11 @@ int main(){
 		//registroCliente (client);
 		
 		compraProducto(pedido, 5);
+				
+		
+                   		  
+
+		
 	}
 
 	return 0;
@@ -251,64 +258,77 @@ void registroOperador(struct Registro operador){
 
 //Cuerpo de la funcion del registro del cliente
 void registroCliente(struct Registro cliente){
-	struct Registro client[100];
-	int i;
-	/*FILE *f1;
-	int i, dimension;
+	//struct Registro cliente[100];
+	int i, contador=0;
+	FILE *f1;
+	int dimension;
 	f1 = fopen ("datosdelcliente.txt", "r");
-	fscanf(f1, "%d\n", &dimension);
-	for (i=0; i<dimension; i++){
-		fscanf(f1, "%s %s %s %s %s %s %s %d %d %s %s %d %d %d %d %d\n", client[i].nombre, client[i].apellidos, client[i].contrasena, client[i].dni, client[i].email, client[i].sexo, client[i].calle, &client[i].portal, &client[i].piso, client[i].puerta, client[i].localidad, &client[i].fechaNacimiento[i].dia, &client[i].fechaNacimiento[i].mes, &client[i].fechaNacimiento[i].annyo, &client[i].tlf, &client[i].numeroCuenta);
+	//fscanf(f1, "%d\n", &dimension);
+	if (f1 == NULL){
+		printf("No se ha encontrado el fichero\n");
+		//return -1;
 	}
-	fclose (f1);*/
-	
+	while (fscanf(f1, "%s %s %s %s %s %s %s %d %d %s %s %d %d %d %d %d", cliente.nombre, cliente.apellidos, cliente.contrasena, cliente.dni, cliente.email, cliente.sexo, cliente.calle, &cliente.portal, &cliente.piso, cliente.puerta, cliente.localidad, &cliente.fechaNacimiento.dia, &cliente.fechaNacimiento.mes, &cliente.fechaNacimiento.annyo, &cliente.tlf, &cliente.numeroCuenta) != EOF){
+		contador++;
+	} 
+	printf("Numero de clientes registrados: %d\n", contador);
+	fclose(f1);
+		
 	fflush(stdin);
 	printf("Nombre: ");
-	scanf("%s", client[i].nombre);
+	gets(cliente.nombre);
 	fflush(stdin);
 	printf("Apellidos: ");
-	scanf("%s", client[i].apellidos);
+	gets(cliente.apellidos);
 	fflush(stdin);
 	printf("Contrasena: ");
-	scanf("%s", client[i].contrasena);
+	scanf("%s", cliente.contrasena);
 	fflush(stdin);
 	printf("DNI: ");
-	scanf("%s", client[i].dni);
+	scanf("%s", cliente.dni);
 	fflush(stdin);
 	printf("Email: ");
-	scanf("%s", client[i].email);
+	scanf("%s", cliente.email);
 	fflush(stdin);
 	printf("Sexo (masculino o femenino): ");
-	scanf("%s", client[i].sexo);
+	scanf("%s", cliente.sexo);
 	fflush(stdin);
-	printf("Calle-Portal-Piso-Puerta:\n");
-	scanf("%s %d %d %s", client[i].calle, &client[i].portal, &client[i].piso, client[i].puerta);
+	printf("Calle:");
+	gets(cliente.calle);
+	printf("Portal-Piso-Puerta: ");
+	scanf("%d %d %s", &cliente.portal, &cliente.piso, cliente.puerta); 
 	fflush(stdin);
 	printf("Localidad: ");
-	scanf("%s", client[i].localidad);
+	scanf("%s", cliente.localidad);
 	
 	printf("Dia-Mes-Ano de nacimiento: ");
-	scanf("%d %d %d", &client[i].fechaNacimiento.dia, &client[i].fechaNacimiento.mes, &client[i].fechaNacimiento.annyo);
+	scanf("%d %d %d", &cliente.fechaNacimiento.dia, &cliente.fechaNacimiento.mes, &cliente.fechaNacimiento.annyo);
 
 	printf("Telefono: ");
-	scanf("%d", &client[i].tlf);
+	scanf("%d", &cliente.tlf);
 
 	printf("Numero de cuenta: ");
-	scanf("%d", &client[i].numeroCuenta);
+	scanf("%d", &cliente.numeroCuenta);
+	
+	f1 = fopen ("datosdelcliente.txt", "w");
 	//dimension = dimension + 1;
 	
-	/*f1 = fopen ("datosdelcliente.txt", "w");
-	fprintf(f1, "%d", dimension);
-	for (i=0; i<dimension; i++){
-		fprintf(f1, "%s %s %s %s %s %s %s %d %d %s %s %d %d %d %d %d\n", client[i].nombre, client[i].apellidos, client[i].contrasena, client[i].dni, client[i].email, client[i].sexo, client[i].calle, client[i].portal, client[i].piso, client[i].puerta, client[i].localidad, client[i].fechaNacimiento[i].dia, client[i].fechaNacimiento[i].mes, client[i].fechaNacimiento[i].annyo, client[i].tlf, client[i].numeroCuenta);
+	//f1 = fopen ("datosdelcliente.txt", "w");
+	//fprintf(f1, "%d", dimension);
+	if (f1 ==NULL){
+		printf("No se encuentra el fichero\n");
 	}
-	fclose (f1);*/
 	
+	for (i=0; i<contador; i++){
+		fprintf(f1, "%s %s %s %s %s %s %s %d %d %s %s %d %d %d %d %d\n", cliente.nombre, cliente.apellidos, cliente.contrasena, cliente.dni, cliente.email, cliente.sexo, cliente.calle, cliente.portal, cliente.piso, cliente.puerta, cliente.localidad, cliente.fechaNacimiento.dia, cliente.fechaNacimiento.mes, cliente.fechaNacimiento.annyo, cliente.tlf, cliente.numeroCuenta);
+	}
+	
+	fclose (f1);
 	
 }
 
 void compraProducto (struct TProducto pedido[], int dimension){ 
-	
+	//struct TProducto pedido1[5];
 	int numero = 0;
 	char codigobuscado[10];
 	int i;
