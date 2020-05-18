@@ -1,17 +1,15 @@
 
 - Formula: HNO3
 - Peso molecular: 63,01 Kg/Kmol
-- Concentración: 60%
+- Concentracion: 60%
 - Capacidad: 25 L
-- Descripcion:El ácido nítrico es un compuesto químico que se presenta en forma
-  líquida, viscosa y corrosiva. Se presenta en bombonas de 25 litros que pesan 32 kg,
-  con lo que la densidad relativa de nuestro ácido nítrico (con concentración del 60%) 
-  es de 1,3 g/cm3. También es conocido como agua fuerte, ácido de grabadores o ácido azoico.
-- Indicaciones:El ácido nítrico se obtiene por oxidación del amoníaco, es un líquido 
-  transparente, incoloro o amarillento, sofocante cáustico, corrosivo e higroscópico. 
-  Ataca casi todos los metales y es un fuerte agente oxidante, miscible en agua y descompone 
-  en alcoholes. El ácido nítrico es altamente peligroso en su manipulación por su fuerte 
-  efecto oxidante que quema la piel, y por los gases nitrosos que desprende. 
-  Conviene utilizar guantes y ropa protectora para su manipulación
+- Descripcion:El acido nitrico es un compuesto quimico que se presenta en forma
+  liquida, viscosa y corrosiva. Se presenta en bombonas de 25 litros que pesan 32 kg,
+  con lo que la densidad relativa de nuestro acido nitrico (con concentracion del 60%) 
+  es de 1,3 g/cm3. Tambien es conocido como agua fuerte, acido de grabadores o acido  	azoico.
+- Indicaciones:El acido nitrico se obtiene por oxidacion del amoniaco, es un liquido 
+  transparente, incoloro o amarillento, sofocante caustico, corrosivo e higroscopico. 
+  Ataca casi todos los metales y es un fuerte agente oxidante, miscible en agua y        descompone en alcoholes. El acido nitrico es altamente peligroso en su manipulacion por su fuerte efecto oxidante que quema la piel, y por los gases nitrosos que desprende. 
+  Conviene utilizar guantes y ropa protectora para su manipulacion
 - Precio:33 euros
  

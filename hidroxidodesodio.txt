@@ -1,12 +1,11 @@
 - Formula: NaOH
 - Peso molecular: 40 Kg/Kmol 
-- Concentración: 50%
+- Concentracion: 50%
 - Capacidad: 25 L
 - Peso bombona: 32 Kg
-- Descripcion:La sosa cáustica también conocida como hidróxido de sodio es una
-  sustancia corrosiva utilizada tanto a nivel industrial como doméstico.Se utiliza en la
-  formulación de productos de uso profesional como limpiadores de horno, decapantes de 
-  suelos, limpiadores de drenaje, productos para el cabello alisado.La sosa cáustica o 
-  hidróxido de sodio diluida al 25% es muy utilizada en sectores la agricultura, cosmética,
-  limpieza o higiene. En el hogar, destaca su uso como desatascador.
+- Descripcion: La sosa caustica tambien conocida como hidroxido de sodio es una
+  sustancia corrosiva utilizada tanto a nivel industrial como domestico. Se utiliza en la
+  formulacion de productos de uso profesional como limpiadores de horno, decapantes de 
+  suelos, limpiadores de drenaje, productos para el cabello alisado.La sosa caustica o 
+  hidroxido de sodio diluida al 25% es muy utilizada en sectores la agricultura, cosmetica,limpieza o higiene. En el hogar, destaca su uso como desatascador.
 - Precio: 53 euros
