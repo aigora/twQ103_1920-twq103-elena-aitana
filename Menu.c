@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-// Dia 21 MAYO Intento 3
+// Dia 21 MAYO Intento 5 o 6
 
 struct TFecha {
 	int dia;
@@ -29,7 +29,7 @@ void registroCliente(struct Registro cliente, int dimension);
 
 void registroOperador(struct Registro operador);
 
-void compraProducto (struct TProducto pedido[], int dimension); //Pasar el vector de estructuras en elargumento
+int compraProducto (struct TProducto pedido[], int dimension); //Pasar el vector de estructuras en elargumento
 //void ListaProductos ();
 
 int main(){
@@ -46,8 +46,11 @@ int main(){
 	struct TProducto pedido[5] = {{"AB", 10, 30}, {"BC", 20, 53}, {"CD", 30, 27}, {"DE", 40, 33}, {"EF", 50, 86}};
 	int n;
 	int dimension = 5;
-	//char codigo[10];
+	
+	
+	printf("\n");
 	printf(" */*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/BIENVENIDO/a a ETSIDICHEMISTLAB/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/\n");
+	printf("\n");
 	printf("Tu tienda online donde podras encontrar el producto quimico que tanto tiempo has estado buscando!!\n");
 	
 	printf("A continuacion, te mostramos el menu de opciones:\n");
@@ -64,113 +67,60 @@ int main(){
 		scanf("%c", &tipoUsuario);
 		if (tipoUsuario == 'O' || tipoUsuario == 'o') {
 			do {
-				printf("¿Que desea realizar?\n");
-				printf("a) Introduzca r para registrarte\n");
-				printf("b) Introduzca a para acceder\n");
-				printf("c) Introduzca s para salir\n"); //PREGUNTAR COMO SALIR DEL PROGRAMA!!
-				getchar();
-				scanf("%c", &opcion);
-				system("cls");
-				switch (opcion) {
-					case 'r':
-					case 'R':
-						do{
-							printf("Antes de acceder, introduzca la clave de acceso que le haya asignado su empresa: "); //La clave debe ser 1234
-							fflush(stdin);
-							scanf("%s", &clave);
-							if (strcmp(clave, claveAcceso) == 0) {
-								printf("Acceso concedido\n");
-								system("cls");
-							}else {
-								printf("Ha introducido mal la clave, vuelva a introducirla\n");
-							}	
-						}while (clave != claveAcceso);
-						
-						registroOperador (oper);
-						break;
-					case 'a':
-					case 'A':
-						printf("Bienvenido al stock\n");
-						printf("Quiere consultar el stock? (S/Cualquier letra):\n");
-						fflush(stdin);
-						scanf("%c", &opcion2);
-						if (opcion2 == 'S' || opcion2 == 's'){
-							f = fopen("quimicos.txt", "r");
-							if ( f == NULL) {
-								printf("No se encuentra el fichero\n");
-								return 0;
-							}
-							printf("A continuacion le mostramos la lista de productos: \n");
-							while(fscanf(f, "%c", &x) != EOF){
-								printf("%c", x);
-							}
-							printf("\n");
-								
-							fclose(f);
-						}else {
-							printf("Hasta pronto.\n");
-						}
-						break;
-						case 's':
-						case 'S': 
-							printf("Gracias por acceder a ETSIDICHEMISTLAB. Hasta pronto!!\n");
-							break;
-						}
-				} while (opcion != 's');
-			/*do { //ESTO ES LO QUE TENIAMOS ANTES
-				printf("Antes de acceder, introduzca la clave de acceso que le haya asignado su empresa: "); //La clave debe ser 1234
-				fflush(stdin);
-				scanf("%s", &clave);
-				if (strcmp(clave, claveAcceso) == 0) {
-					printf("Acceso concedido\n");
-					system("cls");
-					/*do {
-						printf("¿Que desea realizar?\n");
-						printf("a) Introduzca r para registrarte\n");
-						printf("b) Introduzca a para acceder\n");
-						printf("c) Introduzca s para salir\n"); //PREGUNTAR COMO SALIR DEL PROGRAMA!!
-						getchar();
-						scanf("%c", &opcion);
-						system("cls");
-						switch (opcion) {
-						case 'r':
-						case 'R':
-							registroOperador (oper);
-							break;
-						case 'a':
-						case 'A':
-							printf("Bienvenido al stock\n");
-							printf("Quiere consultar el stock? (S/Cualquier letra):\n");
-							fflush(stdin);
-							scanf("%c", &opcion2);
-							if (opcion2 == 'S' || opcion2 == 's'){
-								f = fopen("quimicos.txt", "r");
-								if ( f == NULL) {
-									printf("No se encuentra el fichero\n");
-									return 0;
-								}
-								printf("A continuacion le mostramos la lista de productos: \n");
-								while(fscanf(f, "%c", &x) != EOF){
-									printf("%c", x);
-								}
-								printf("\n");
-								
-								fclose(f);
-							}else {
-								printf("Hasta pronto.\n");
-							}
-							break;
-						case 's':
-						case 'S': 
-							printf("Gracias por acceder a ETSIDICHEMISTLAB. Hasta pronto!!\n");
-							break;
-						}
-					} while (opcion != 's');*/
-				/*}
-				else {
-					printf("Ha introducido mal la clave, vuelva a introducirla\n");
-				}
-			} while (clave != claveAcceso);*/
+                printf("¿Que desea realizar?\n");
+                printf("a) Introduzca r para registrarte\n");
+                printf("b) Introduzca a para acceder\n");
+                printf("c) Introduzca s para salir\n"); 
+                getchar();
+                scanf("%c", &opcion);
+                system("cls");
+                switch (opcion) {
+                    case 'r':
+                    case 'R':
+                        do{
+                            printf("Antes de acceder, introduzca la clave de acceso que le haya asignado su empresa: "); //La clave debe ser 1234
+                            fflush(stdin);
+                            scanf("%s", &clave);
+                            if (strcmp(clave, claveAcceso) == 0) {
+                                printf("Acceso concedido\n");
+                               
+                            }else {
+                                printf("Ha introducido mal la clave, vuelva a introducirla\n");
+                            }   
+                        }while (strcmp(clave, claveAcceso) == 1);
+                       
+                        registroOperador (oper);
+                        break;
+                    case 'a':
+                    case 'A':
+                        printf("Bienvenido al stock\n");
+                        printf("Quiere consultar el stock? (S/Cualquier letra):\n");
+                        fflush(stdin);
+                        scanf("%c", &opcion2);
+                        if (opcion2 == 'S' || opcion2 == 's'){
+                            f = fopen("quimicos.txt", "r");
+                            if ( f == NULL) {
+                                printf("No se encuentra el fichero\n");
+                                return 0;
+                            }
+                            printf("A continuacion le mostramos la lista de productos: \n");
+                            while(fscanf(f, "%c", &x) != EOF){
+                                printf("%c", x);
+                            }
+                            printf("\n");
+                               
+                            fclose(f);
+                        }else {
+                            printf("Hasta pronto.\n");
+                        }
+                        break;
+                        case 's':
+                        case 'S':
+                            printf("Gracias por acceder a ETSIDICHEMISTLAB. Hasta pronto!!\n");
+                            break;
+                        }
+            } while (opcion != 's' && opcion != 'a' && opcion != 'r' && opcion != 'A' &&opcion != 'S' && opcion != 'R');
+
 		}
 		else if (tipoUsuario == 'C' || tipoUsuario == 'c'){
 			do {
@@ -194,8 +144,10 @@ int main(){
 					compraProducto (pedido, 5);
 					break;
 				}
-			} while (opcion != 's');
+			} while (opcion != 's' && opcion != 'S' && opcion != 'r' && opcion != 'R' && opcion != 'c' && opcion != 'C');
 		}
+		
+		
 		
 	}else if (opcion == 2){
 		printf("Ha entrado en el stock\n");
@@ -424,15 +376,16 @@ void registroCliente(struct Registro cliente, int dimension){
 	
 }
 
-void compraProducto (struct TProducto pedido[], int dimension){ 
+
+int compraProducto (struct TProducto pedido[], int dimension){ 
 	//struct TProducto pedido1[5];
 	int numero = 0;
 	char codigobuscado[10];
 	int i;
 	int unidad, cantidadFinal;
-	int precioFinal;
+	int precioFinal,nuevacompra,total=0;
 	char respuesta2;
-	int facturaFinal; //Para acumular facturas de una misma compra
+	int FacturaFinal=0; //Para acumular facturas de una misma compra
 	
 	do{
 		printf("Introduzca el codigo del producto que quiere comprar:\n");
@@ -452,21 +405,14 @@ void compraProducto (struct TProducto pedido[], int dimension){
 				fflush(stdin);
 			
 				if ((unidad >=1) && (unidad < pedido[i].cantidad)){
-					cantidadFinal = pedido[i].cantidad - unidad;
-					printf("La cantidad final del producto en el almacen es %d\n", cantidadFinal);
+					//cantidadFinal = pedido[i].cantidad - unidad;
+					//printf("La cantidad final del producto en el almacen es %d\n");
+					//printf("La cantidad final del producto en el almacen es %d\n", cantidadFinal);
 					precioFinal = unidad * pedido[i].precio;
 					printf("La factura a pagar es de %d euros\n", precioFinal);
 					printf("Se le enviara el producto en un plazo de 5 dias laborables\n");
-					
-					fflush(stdin);
-					printf("Quiere realizar otra compra (S/Cualquier tecla): \n");
-					scanf("%c", &respuesta2);
-					if(respuesta2 == 's'|| respuesta2 == 'S'){
-			         	compraProducto(pedido, 5);
-			         	//precioFinal += pedido[i].precio;
-					}
-					facturaFinal += precioFinal;
-					printf("Su factura final es de %d euros\n", facturaFinal);
+					//facturaFinal += precioFinal;
+					//printf("Su factura final es de %d euros\n", facturaFinal);
 					break;
 				
 				}else{
@@ -481,5 +427,23 @@ void compraProducto (struct TProducto pedido[], int dimension){
 			}
 		}
 	} while(strcmp (pedido[i].codigo, codigobuscado) != 0 );
-	
+	fflush(stdin);
+	printf("Quiere realizar otra compra (S/Cualquier tecla): \n");
+	scanf("%c", &respuesta2);
+	if(respuesta2 == 's'|| respuesta2 == 'S') {
+		compraProducto(pedido, 5);
+		/*precioFinal += pedido[i].precio;
+		total=nuevacompra+precioFinal;
+		printf("El valor de su compra final es: %d\n",precioFinal);
+		printf("Se le enviara el producto en un plazo de 5 dias laborables\n");
+		Facturafinal+=precioFinal;
+		printf("La factura total es %d\n",Facturafinal);*/
+	} else {
+		printf("Gracias por su compra, esperamos verlo de nuevo.\n");
+		printf("Recibira su compra en su domicilio\n");
+		return 0;
+		}
+			
+	return 0;
 }
+
