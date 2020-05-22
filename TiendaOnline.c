@@ -41,11 +41,11 @@ int compraProducto (struct TProducto pedido[], int dimension);
 int main(){
 	
 	char tipoUsuario;
-	char opcion, opcion2, respuesta;
+	char opcion, opcion2, respuesta, respuesta2;
 	int  i;
 	char claveAcceso[10] = {"1234"}, clave[10];
 	struct Registro oper;
-	struct Registro cliente, operador;
+	struct Registro cliente;
 	FILE *f, *pfichero1, *pfichero2, *pfichero3, *pfichero4,*pfichero5;
 	char x,y;
 	int quimico;
@@ -77,7 +77,7 @@ int main(){
 		
 		if (tipoUsuario == 'O' || tipoUsuario == 'o') { //CORRESPONDE A UN OPERADOR DE LA TIENDA
 			do {
-                printf("øQue desea realizar?\n");
+                printf("¬øQue desea realizar?\n");
                 printf("a) Introduzca r para registrarte\n");
                 printf("b) Introduzca a para acceder\n");
                 printf("c) Introduzca s para salir\n"); 
@@ -134,7 +134,7 @@ int main(){
             
 		}else if (tipoUsuario == 'C' || tipoUsuario == 'c'){ //CORRESPONDE A UN CLIENTE DE LA TIENDA
 			do {
-				printf("øQue desea realizar?:\n");
+				printf("¬øQue desea realizar?:\n");
 				printf("a) Introduzca r para registrarte\n");
 				printf("b) Introduzca c para comprar\n");
 				printf("c) Introduzca s si quieres salir\n");
@@ -157,7 +157,7 @@ int main(){
 			} while (opcion != 's' && opcion != 'S' && opcion != 'r' && opcion != 'R' && opcion != 'c' && opcion != 'C');
 		}
 		
-//SE ACCEDE Al STOCK DIRECTAMENTE. EN EL CASO DE QUE DESEE REALIZAR UNA COMPRA, SE LE PEDIR¡ REGISTRARSE SIN TENER 
+//SE ACCEDE Al STOCK DIRECTAMENTE. EN EL CASO DE QUE DESEE REALIZAR UNA COMPRA, SE LE PEDIR√Å REGISTRARSE SIN TENER 
 //QUE VOLVER A LA OPCION 1 DE REGISTRO
 
 	}else if (opcion == 2){ 
@@ -193,7 +193,7 @@ int main(){
 			         	fflush(stdin);
 			         	printf("Desea comprar el producto (S o N):\n\n");
 			         	scanf("%c", &respuesta);
-			         	if(respuesta=='s'|| respuesta=='S'){
+			         	if(respuesta == 's'|| respuesta == 'S'){
 			         		printf("Antes de comprar, por favor, registrese para acceder\n");
 							registroCliente (cliente, 5);
 			         		compraProducto(pedido, 5);
@@ -209,7 +209,7 @@ int main(){
 			         	fflush(stdin);
 			         	printf("Desea comprar el producto (S o N):\n\n");
 			         	scanf("%c", &respuesta);
-			         	if(respuesta=='s'|| respuesta=='S'){
+			         	if(respuesta == 's'|| respuesta == 'S'){
 			         		printf("Antes de comprar, por favor, registrese para acceder\n");
 			         		registroCliente (cliente, 5);
 			         		compraProducto(pedido, 5);
@@ -225,7 +225,7 @@ int main(){
 				        fflush(stdin);
 			         	printf("Desea comprar el producto (S o N):\n\n");
 			         	scanf("%c", &respuesta);
-			         	if(respuesta=='s'|| respuesta=='S'){
+			         	if(respuesta == 's'|| respuesta == 'S'){
 			         		printf("Antes de comprar, por favor, registrese para acceder\n");
 			         		registroCliente (cliente, 5);
 			         		compraProducto(pedido, 5);
@@ -241,7 +241,7 @@ int main(){
 			         	fflush(stdin);
 			         	printf("Desea comprar el producto (S o N):\n\n");
 			         	scanf("%c", &respuesta);
-			         	if(respuesta=='s'|| respuesta=='S'){
+			         	if(respuesta == 's'|| respuesta == 'S'){
 			         		printf("Antes de comprar, por favor, registrese para acceder\n");
 			         		registroCliente (cliente, 5);
 			         		compraProducto(pedido, 5);
@@ -257,7 +257,7 @@ int main(){
 				        fflush(stdin);
 			         	printf("Desea comprar el producto (S o N):\n\n");
 			         	scanf("%c", &respuesta);
-			         	if(respuesta=='s'|| respuesta=='S'){
+			         	if(respuesta == 's'|| respuesta == 'S'){
 			         		printf("Antes de comprar, por favor, registrese para acceder\n");
 		         			registroCliente (cliente, 5);
 			         		compraProducto(pedido, 5);
@@ -270,11 +270,16 @@ int main(){
 		}while( quimico < 1 || quimico > 5);
 	}
 	
-	//SE ACCEDE A LA COMPRA-VENTA DE PRODUCTOS. SI NO SE HA REGISTRADO ANTES, SE LE PEDIR¡ HACERLO
+	//SE ACCEDE A LA COMPRA-VENTA DE PRODUCTOS. SI NO SE HA REGISTRADO ANTES, SE LE PEDIR√Å HACERLO
 	else if (opcion == 3) { 
 		printf("Ha elegido acceder a la venta de productos\n");
-		printf("Por favor, registrese para acceder\n");
-		registroCliente (cliente, 5);
+		printf("Para acceder se requiere estar registrado\n");
+		fflush(stdin);
+		printf("Por favor, indique si se ha registrado previamente (S/N):\n");
+		scanf("%c", &respuesta2);
+		if (respuesta2 == 'n' || respuesta2 == 'N'){
+			registroCliente (cliente, 5);
+		}
 		system("cls");
 		compraProducto(pedido, 5);
 	}
@@ -283,7 +288,7 @@ int main(){
 	return 0;
 }
 
-//A CONTINUACI”N SE DESARROLLAN LAS FUNCIONES EMPLEADAS EN EL PROGRAMA
+//A CONTINUACI√ìN SE DESARROLLAN LAS FUNCIONES EMPLEADAS EN EL PROGRAMA
 
 //CUERPO FUNCION REGISTRO DE UN OPERADOR
 
@@ -501,7 +506,7 @@ int compraProducto (struct TProducto pedido[], int dimension){
 		for(i=0; i <5; i++){
 		
 			if (strcmp (pedido[i].codigo, codigobuscado) == 0 ) {
-				printf("øCuantas unidades quieres?:\n");
+				printf("¬øCuantas unidades quieres?:\n");
 				scanf("%d", &unidad);
 				fflush(stdin);
 			
@@ -509,18 +514,14 @@ int compraProducto (struct TProducto pedido[], int dimension){
 					precioFinal = unidad * pedido[i].precio;
 					printf("La factura a pagar es de %d euros\n", precioFinal);
 					printf("Se le enviara el producto en un plazo de 5 dias laborables\n");
+					printf("\n");
 					break;
 				
 				}else{
 					printf("No hay suficiente stock\n");
 				}
 			}
-			//else {
-			//	if (numero ==5){
-				//	printf("Has introducido un codigo erroneo\n");
-				//}
-				
-			//}
+			
 		}
 	} while(strcmp (pedido[i].codigo, codigobuscado) != 0 );
 	
@@ -533,6 +534,7 @@ int compraProducto (struct TProducto pedido[], int dimension){
 		compraProducto(pedido, 5);
 		
 	} else {
+		printf("\n");
 		printf("Gracias por su compra. Esperamos verlo de nuevo.\n");
 		printf("Recibira su compra en su domicilio\n");
 		return 0;
