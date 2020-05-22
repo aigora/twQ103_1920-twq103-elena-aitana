@@ -68,7 +68,6 @@ int main(){
 		printf("1. Registro.\n");
 		printf("2. Stock.\n");
 		printf("3. Venta.\n");
-		printf("4. Salir.\n");
 		scanf("%d", &opcion);
 		system("cls");
 		
