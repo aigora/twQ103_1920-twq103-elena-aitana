@@ -155,7 +155,6 @@ int main(){
 					//Funcion del registro de un cliente
 					registroCliente (cliente, 5);
 					printf("Ya forma parte de EtsidiChemistLab, le esperamos con todos nuestros productos a su disposicion\n");
-					printf("Hasta la proxima!");
 					break;
 					
 				case 'c':
