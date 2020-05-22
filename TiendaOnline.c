@@ -363,7 +363,7 @@ int registroOperador(struct Registro operador, int dimension){
 	scanf("%s", operador.email);
 	
 	fflush(stdin);
-	printf("Sexo (masculino o femenino): ");
+	printf("Indique (hombre o mujer): ");
 	scanf("%s", operador.sexo);
 	
 	fflush(stdin);
@@ -460,7 +460,7 @@ int registroCliente(struct Registro cliente,int dimension){
     scanf("%s", cliente.email);
     
     fflush(stdin);
-    printf("Sexo (masculino o femenino): ");
+    printf("Indique (Hombre o Mujer): ");
     scanf("%s", cliente.sexo);
     
     fflush(stdin);
