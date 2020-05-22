@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+//Bienvenido/a a nuestra web ETSIDICHEMISTLAB! 
+//En ella encontrará algunos de los producos químicos de uso industrial. 
+
 //FECHA DE NACIMIENTO
 struct TFecha {
 	int dia;
@@ -53,20 +56,25 @@ int main(){
 	
 	
 	printf("\n");
-	printf(" */*/*/*/*/*/*/*/*/*/BIENVENIDO/A a ETSIDICHEMISTLAB/*/*/*/*/*/*/*/*\n");
+	printf(" */*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/BIENVENIDO/A a ETSIDICHEMISTLAB/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/\n");
 	printf("\n");
 	printf("Tu tienda online donde podras encontrar el producto quimico que tanto tiempo has estado buscando!!\n");
 	
 	printf("\nA continuacion, le mostramos el menu de opciones de nuestra tienda:\n");
-	printf("\nElija donde quiere acceder: \n");
-	printf("\n1. Registro.\n");
-	printf("2. Stock.\n");
-	printf("3. Venta.\n");
-	scanf("%d", &opcion);
 	
 	//DESARROLLAMOS LAS FUNCIONALIDADES DE LA TIENDA ATENDIENDO A LA OPCION ELEGIDA ANTERIORMENTE
+	while (1){
 	
-	if (opcion == 1){ //DISTINGUIMOS ENTRE OPERADOR Y CLIENTE 
+		
+		printf("\nElija donde quiere acceder: \n");
+		printf("1. Registro.\n");
+		printf("2. Stock.\n");
+		printf("3. Venta.\n");
+		printf("4. Salir.\n");
+		scanf("%d", &opcion);
+		system("cls");
+		
+		if (opcion == 1){ //DISTINGUIMOS ENTRE OPERADOR Y CLIENTE 
 		printf("Por favor, indique si es operador o cliente, para ello pulse:\n");
 		printf("a) 'O' si es operador\n");
 		printf("b) 'C' si es cliente\n");
@@ -101,6 +109,7 @@ int main(){
                         registroOperador (oper, 5);
                         printf("Bienvenido, ya forma parte de la familia EtsidiChemistLab.\n");
                         break;
+                        
                     case 'a':
                     case 'A':
                         printf("Bienvenido al stock\n");
@@ -124,11 +133,11 @@ int main(){
                             printf("Hasta pronto.\n");
                         }
                         break;
-                        case 's':
-                        case 'S':
-                            printf("Gracias por acceder a ETSIDICHEMISTLAB. Hasta pronto!!\n");
-                            break;
-                        }
+                    case 's':
+                    case 'S':
+                        printf("Gracias por acceder a ETSIDICHEMISTLAB. Hasta pronto!!\n");
+                        break;
+                    }
             } while (opcion != 's' && opcion != 'a' && opcion != 'r' && opcion != 'A' &&opcion != 'S' && opcion != 'R');
             
 		}else if (tipoUsuario == 'C' || tipoUsuario == 'c'){ //CORRESPONDE A UN CLIENTE
@@ -147,8 +156,9 @@ int main(){
 					//Funcion del registro de un cliente
 					registroCliente (cliente, 5);
 					printf("Ya forma parte de EtsidiChemistLab, le esperamos con todos nuestros productos a su disposicion\n");
-					printf("!Hasta la proxima!");
+					printf("Hasta la proxima!");
 					break;
+					
 				case 'c':
 				case 'C':
 					//Funcion de la compra de un producto
@@ -158,136 +168,141 @@ int main(){
 			} while (opcion != 's' && opcion != 'S' && opcion != 'r' && opcion != 'R' && opcion != 'c' && opcion != 'C');
 		}
 		
-//SE ACCEDE Al STOCK DIRECTAMENTE. EN EL CASO DE QUE DESEE REALIZAR UNA COMPRA, SE LE PEDIRÁ REGISTRARSE SIN TENER 
-//QUE VOLVER A LA OPCION 1 DE REGISTRO
+		//SE ACCEDE Al STOCK DIRECTAMENTE. EN EL CASO DE QUE DESEE REALIZAR UNA COMPRA, SE LE PEDIRÁ REGISTRARSE SIN TENER 
+		//QUE VOLVER A LA OPCION 1 DE REGISTRO
 
-	}else if (opcion == 2){ 
-		printf("Ha entrado en el Stock de EtsidiChemistLab.\n");
-		
-		f = fopen("quimicos.txt", "r");
-		
-		if ( f == NULL) {
-			printf("No se encuentra el fichero\n");
+		}else if (opcion == 2){ 
+			printf("Ha entrado en el stock\n");
+			
+			f = fopen("quimicos.txt", "r");
+			
+			if ( f == NULL) {
+				printf("No se encuentra el fichero\n");
+				return 0;
+			}
+			printf("\nA continuacion, puede consultar la lista de productos: \n");
+			while(fscanf(f, "%c", &x) != EOF){
+				printf("%c", x);
+			}
+			printf("\n");
+			
+			fclose(f);
+			printf("\n");
+			do {
+				printf("Escoja uno de ellos:\n");
+				scanf("%d", &quimico);
+				system("cls");
+				switch (quimico){
+					
+					case 1: printf("Acido clorhidrico\n"); 
+							pfichero1 = fopen("acidoclorhidrico.txt", "r");
+							while(fscanf(pfichero1, "%c", &x )!= EOF){
+				         		printf("%c", x);
+						 	}
+				         	fclose(pfichero1);
+				         	printf("\n");
+				         	fflush(stdin);
+				         	printf("Desea comprar el producto (S o N):\n\n");
+				         	scanf("%c", &respuesta);
+				         	if(respuesta == 's'|| respuesta == 'S'){
+				         		printf("\nAntes de comprar, por favor, registrese para acceder\n");
+								registroCliente (cliente, 5);
+				         		compraProducto(pedido, 5);
+						 	}
+							break;
+							
+					case 2: printf("Hidroxido de Sodio\n");
+							pfichero2 = fopen("hidroxidodesodio.txt", "r");
+							while(fscanf(pfichero2, "%c", &x )!= EOF){
+				         		printf("%c", x);
+						 	}
+				         	fclose(pfichero2);
+				         	printf("\n");
+				         	fflush(stdin);
+				         	printf("Desea comprar el producto (S o N):\n\n");
+				         	scanf("%c", &respuesta);
+				         	if(respuesta == 's'|| respuesta == 'S'){
+				         		printf("\nAntes de comprar, por favor, registrese para acceder\n");
+				         		registroCliente (cliente, 5);
+				         		compraProducto(pedido, 5);
+						 	}
+							break;
+							
+					case 3: printf("Acido sulfurico\n");
+							pfichero3 = fopen("acidosulfurico.txt", "r");
+							while(fscanf(pfichero3, "%c", &x )!= EOF){
+				         		printf("%c", x);
+							}
+					        fclose(pfichero3);
+					        
+					        fflush(stdin);
+				         	printf("Desea comprar el producto (S o N):\n\n");
+				         	scanf("%c", &respuesta);
+				         	if(respuesta == 's'|| respuesta == 'S'){
+				         		printf("\nAntes de comprar, por favor, registrese para acceder\n");
+				         		registroCliente (cliente, 5);
+				         		compraProducto(pedido, 5);
+						 	}
+							break;
+							
+					case 4: printf("Acido nitrico\n"); 
+							pfichero4 = fopen("acidonitrico.txt", "r");
+							while(fscanf(pfichero4, "%c", &x )!= EOF){
+				         		printf("%c", x);
+						 	}
+				         	fclose(pfichero4);
+				         	
+				         	fflush(stdin);
+				         	printf("Desea comprar el producto (S o N):\n\n");
+				         	scanf("%c", &respuesta);
+				         	if(respuesta == 's'|| respuesta == 'S'){
+				         		printf("\nAntes de comprar, por favor, registrese para acceder\n");
+				         		registroCliente (cliente, 5);
+				         		compraProducto(pedido, 5);
+						 	}
+						 	break;
+						 	
+				    case 5: printf("Acido fosforico\n"); 
+							pfichero5 = fopen("acidofosforico.txt", "r");
+							while(fscanf(pfichero5, "%c", &x )!= EOF){
+				         		printf("%c", x);
+						 	}
+					        fclose(pfichero5);
+					        printf("\n");
+					        fflush(stdin);
+				         	printf("Desea comprar el producto (S o N):\n\n");
+				         	scanf("%c", &respuesta);
+				         	if(respuesta == 's'|| respuesta == 'S'){
+				         		printf("\nAntes de comprar, por favor, registrese para acceder\n");
+			         			registroCliente (cliente, 5);
+				         		compraProducto(pedido, 5);
+						 	}
+							break;
+				    default: printf("Opcion no valida. Se dispone de 5 productos unicamente. Introduzcala otra vez\n");
+				    		
+				}
+				
+			}while( quimico < 1 || quimico > 5);
+		}
+	
+		//SE ACCEDE A LA COMPRA-VENTA DE PRODUCTOS. SI NO SE HA REGISTRADO ANTES, SE LE PEDIRÁ HACERLO
+		else if (opcion == 3) { 
+			printf("\nHa elegido acceder a la venta de productos\n");
+			printf("\nPara acceder se requiere estar registrado\n");
+			fflush(stdin);
+			printf("\nPor favor, indique si se ha registrado previamente (S/N):\n");
+			scanf("%c", &respuesta2);
+			if (respuesta2 == 'n' || respuesta2 == 'N'){
+				registroCliente (cliente, 5);
+			}
+			system("cls");
+			compraProducto(pedido, 5);
+		}
+		else {
 			return 0;
 		}
-		printf("\nA continuacion, puede consultar la lista de productos: \n");
-		while(fscanf(f, "%c", &x) != EOF){
-			printf("%c", x);
-		}
-		printf("\n");
-		
-		fclose(f);
-		printf("\n");
-		do {
-			printf("Escoja uno de ellos:\n");
-			scanf("%d", &quimico);
-			system("cls");
-			switch (quimico){
-				
-				case 1: printf("\nAcido clorhidrico\n"); 
-						printf("\n");
-						pfichero1 = fopen("acidoclorhidrico.txt", "r");
-						while(fscanf(pfichero1, "%c", &x )!= EOF){
-			         		printf("%c", x);
-					 	}
-			         	fclose(pfichero1);
-			         	printf("\n");
-			         	fflush(stdin);
-			         	printf("Desea comprar el producto (S o N):\n\n");
-			         	scanf("%c", &respuesta);
-			         	if(respuesta == 's'|| respuesta == 'S'){
-							registroCliente (cliente, 5);
-			         		compraProducto(pedido, 5);
-					 	}
-						break;
-				case 2: printf("Hidroxido de Sodio\n");
-						printf("\n");
-						pfichero2 = fopen("hidroxidodesodio.txt", "r");
-						while(fscanf(pfichero2, "%c", &x )!= EOF){
-			         		printf("%c", x);
-					 	}
-			         	fclose(pfichero2);
-			         	printf("\n");
-			         	fflush(stdin);
-			         	printf("Desea comprar el producto (S o N):\n\n");
-			         	scanf("%c", &respuesta);
-			         	if(respuesta == 's'|| respuesta == 'S'){
-			         		printf("\nAntes de comprar, por favor, registrese para acceder\n");
-			         		registroCliente (cliente, 5);
-			         		compraProducto(pedido, 5);
-					 	}
-						break;
-				case 3: printf("Acido sulfurico\n");
-						printf("\n");
-						pfichero3 = fopen("acidosulfurico.txt", "r");
-						while(fscanf(pfichero3, "%c", &x )!= EOF){
-			         		printf("%c", x);
-						}
-				        fclose(pfichero3);
-				        
-				        fflush(stdin);
-			         	printf("Desea comprar el producto (S o N):\n\n");
-			         	scanf("%c", &respuesta);
-			         	if(respuesta == 's'|| respuesta == 'S'){
-			         		printf("Antes de comprar, por favor, registrese para acceder\n");
-			         		registroCliente (cliente, 5);
-			         		compraProducto(pedido, 5);
-					 	}
-						break;
-				case 4: printf("Acido nitrico\n"); 
-						printf("\n");
-						pfichero4 = fopen("acidonitrico.txt", "r");
-						while(fscanf(pfichero4, "%c", &x )!= EOF){
-			         		printf("%c", x);
-					 	}
-			         	fclose(pfichero4);
-			         	
-			         	fflush(stdin);
-			         	printf("Desea comprar el producto (S o N):\n\n");
-			         	scanf("%c", &respuesta);
-			         	if(respuesta == 's'|| respuesta == 'S'){
-			         		printf("Antes de comprar, por favor, registrese para acceder\n");
-			         		registroCliente (cliente, 5);
-			         		compraProducto(pedido, 5);
-					 	}
-					 	break;
-			    case 5: printf("Acido fosforico\n"); 
-						printf("\n");
-						pfichero5 = fopen("acidofosforico.txt", "r");
-						while(fscanf(pfichero5, "%c", &x )!= EOF){
-			         		printf("%c", x);
-					 	}
-				        fclose(pfichero5);
-				        printf("\n");
-				        fflush(stdin);
-			         	printf("Desea comprar el producto (S o N):\n\n");
-			         	scanf("%c", &respuesta);
-			         	if(respuesta == 's'|| respuesta == 'S'){
-			         		printf("Antes de comprar, por favor, registrese para acceder\n");
-		         			registroCliente (cliente, 5);
-			         		compraProducto(pedido, 5);
-					 	}
-						break;
-			    default: printf("Opcion no valida. Se dispone de 5 productos unicamente. Introduzcala otra vez\n");
-			    		
-			}
-			
-		}while( quimico < 1 || quimico > 5);
 	}
 	
-	//SE ACCEDE A LA COMPRA-VENTA DE PRODUCTOS. SI NO SE HA REGISTRADO ANTES, SE LE PEDIRÁ HACERLO
-	else if (opcion == 3) { 
-		printf("\nHa elegido acceder a la venta de productos\n");
-		printf("\nPara acceder se requiere estar registrado\n");
-		fflush(stdin);
-		printf("\nPor favor, indique si se ha registrado previamente (S/N):\n");
-		scanf("%c", &respuesta2);
-		if (respuesta2 == 'n' || respuesta2 == 'N'){
-			registroCliente (cliente, 5);
-		}
-		system("cls");
-		compraProducto(pedido, 5);
-	}
 	
 	//FIN DEL PROGRAMA
 	return 0;
@@ -325,7 +340,8 @@ int registroOperador(struct Registro operador, int dimension){
     fclose(F2);
     
     //TRABAJAMOS CON EL VECTOR DE ESTRUCTURAS OPERADOR
-    printf("A continuacion, le vamos a pedir sus datos personales para proceder al registro.\n");
+    printf("\nA continuacion, le vamos a pedir sus datos personales para proceder al registro.\n");
+	printf("\n");
     fflush(stdin);
 	printf("Nombre: ");
 	scanf("%s", operador.nombre);
@@ -347,14 +363,13 @@ int registroOperador(struct Registro operador, int dimension){
 	scanf("%s", operador.email);
 	
 	fflush(stdin);
-    printf("Indique (Hombre o Mujer): ");
+	printf("Sexo (masculino o femenino): ");
 	scanf("%s", operador.sexo);
 	
 	fflush(stdin);
 	printf("Calle:");
 	scanf("%s", operador.calle);
 	
-	fflush(stdin);
 	printf("Portal-Piso-Puerta: ");
 	scanf("%d %d %s", &operador.portal, &operador.piso, operador.puerta); 
 	
@@ -362,15 +377,12 @@ int registroOperador(struct Registro operador, int dimension){
 	printf("Localidad: ");
 	scanf("%s", operador.localidad);
 	
-	fflush(stdin);
 	printf("Dia-Mes-Ano de nacimiento: ");
 	scanf("%d %d %d", &operador.fechaNacimiento.dia, &operador.fechaNacimiento.mes, &operador.fechaNacimiento.annyo);
 			
-	fflush(stdin);
 	printf("Telefono: ");
 	scanf("%d", &operador.tlf);
 		
-	fflush(stdin);
 	printf("Numero de cuenta: ");
 	scanf("%d", &operador.numeroCuenta);
 			
@@ -425,9 +437,9 @@ int registroCliente(struct Registro cliente,int dimension){
     fclose(F1);
     
 	//TRABAJAMOS CON EL VECTOR DE ESTRUCTURAS CLIENTE
-	printf("\nA continuacion, le vamos a pedir sus datos personales para proceder al registro y asi permitirle acceder a la compra.\n");
+	printf("A continuacion, le vamos a pedir sus datos personales para proceder al registro.\n");
+	printf("\n");
     fflush(stdin);
-    getchar();
     printf("Nombre: ");
     scanf("%s",cliente.nombre);
     
@@ -448,14 +460,13 @@ int registroCliente(struct Registro cliente,int dimension){
     scanf("%s", cliente.email);
     
     fflush(stdin);
-    printf("Indique (Hombre o Mujer): ");
+    printf("Sexo (masculino o femenino): ");
     scanf("%s", cliente.sexo);
     
     fflush(stdin);
     printf("Calle:");
     scanf("%s",cliente.calle);
     
-	fflush(stdin);
     printf("Portal-Piso-Puerta: ");
     scanf("%d %d %s", &cliente.portal, &cliente.piso, cliente.puerta); 
     
@@ -463,16 +474,13 @@ int registroCliente(struct Registro cliente,int dimension){
     printf("Localidad: ");
     scanf("%s", cliente.localidad);
     
-	fflush(stdin);
     printf("Dia-Mes-Ano de nacimiento: ");
     scanf("%d %d %d", &cliente.fechaNacimiento.dia, &cliente.fechaNacimiento.mes, &cliente.fechaNacimiento.annyo);
     
-	fflush(stdin);
     printf("Telefono: ");
     scanf("%d", &cliente.tlf);
     
-    fflush(stdin);
-	printf("Numero de cuenta: ");
+    printf("Numero de cuenta: ");
     scanf("%d", &cliente.numeroCuenta);
 	
 	//ABRIMOS EL FICHERO EN MODO ESCRITURA
@@ -541,7 +549,7 @@ int compraProducto (struct TProducto pedido[], int dimension){
 	
 	//LE PREGUNTAMOS SI QUIERE SEGUIR COMPRANDO
 	fflush(stdin);
-	printf("\ Si desea realizar otra compra introduzca S, si por lo contrario desea salir pulse cualquier tecla:\n");
+	printf("\nSi desea realizar otra compra introduzca S, si por lo contrario desea salir pulse cualquier tecla:\n");	
 	scanf("%c", &respuesta2);
 	
 	if(respuesta2 == 's'|| respuesta2 == 'S') {
@@ -550,13 +558,10 @@ int compraProducto (struct TProducto pedido[], int dimension){
 	} else {
 		printf("\n");
 		printf("Gracias por su compra. Esperamos verlo de nuevo.\n");
-		printf("\nRecibira su compra en su domicilio.\n");
+		printf("\nRecibira su compra en su domicilio\n");
 		return 0;
 	}
 			
 	return 0;
 }
-
-
-
 
