@@ -1,0 +1,7 @@
+LISTADO DE PRODUCTOS:
+
+1. Acido Clorhidrico (HCl)
+2. Hidroxido de Sodio (NaOH)
+3. Acido Sulfurico (H2SO4)
+4. Acido Nitrico (HNO3)
+5. Acido Fosforico (H3PO4)
