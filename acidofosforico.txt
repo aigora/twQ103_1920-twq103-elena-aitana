@@ -8,7 +8,7 @@
   conocido como Acido ortofosforico.
 - Indicaciones: A temperatura ambiente en concentracion del 75% al 85% es 
   un liquido transparente, incoloro, viscoso y totalmente miscible en agua. 
-  El acido fosforico se produce por dos metodos alternativos:
+  El acido fosforico se produce por dos métodos alternativos:
  a) Quemando fosforo elemental.
  b) Por el metodo humedo consistente en atacar roca fosforica con acido sulfurico.
-- Precio: 86 euros
+- Precio por unidad: 86 euros

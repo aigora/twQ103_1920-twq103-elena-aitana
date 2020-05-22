@@ -4,14 +4,14 @@
 - Concentracion: 50% 
 - Capacidad: 25 L
 - Descripcion:El acido sulfurico (H2SO4) es un liquido denso, aceitoso y 
-  muy corrosivo que se utiliza para la recuperacion de baterias. Ademas 
+  muy corrosivo que se utiliza para la recuperación de baterias. Además 
   tambien se usa para la prevencion de la incrustracion y tambien como desincrustante. 
   Liquido de aspecto aceitoso, denso, fuertemente corrosivo. Miscible con agua en todas 
-  proporciones. Muy reactivo, disuelve la mayoria de metales; el acido concentrado oxida, 
-  deshidrata o sulfona la mayorÃ­a de compuestos organicos, a menudo causa carbonizacion. 
+  proporciones. Muy reactivo, disuelve la mayoria de metales; el ácido concentrado oxida, 
+  deshidrata o sulfona la mayoria de compuestos organicos, a menudo causa carbonizacion. 
 - Indicaciones: Se recomienda tener mucha precaucion al mezclarlo con agua ya que causa 
   salpicaduras explosivas. Es irritante para los tejidos. Este producto es UNICAMENTE DE
   USO INDUSTRIAL y requiere un manejo adecuado debido a su grado de peligrosidad.
-- Precio: 27 euros
+- Precio por unidad: 27 euros
 
  
