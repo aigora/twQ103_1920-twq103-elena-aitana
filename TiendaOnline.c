@@ -63,9 +63,7 @@ int main(){
 	printf("\nA continuacion, le mostramos el menu de opciones de nuestra tienda:\n");
 	
 	//DESARROLLAMOS LAS FUNCIONALIDADES DE LA TIENDA ATENDIENDO A LA OPCION ELEGIDA ANTERIORMENTE
-	while (1){
 	
-		
 		printf("\nElija donde quiere acceder: \n");
 		printf("1. Registro.\n");
 		printf("2. Stock.\n");
@@ -141,7 +139,8 @@ int main(){
             } while (opcion != 's' && opcion != 'a' && opcion != 'r' && opcion != 'A' &&opcion != 'S' && opcion != 'R');
             
 		}else if (tipoUsuario == 'C' || tipoUsuario == 'c'){ //CORRESPONDE A UN CLIENTE
-			do {
+			while(1){
+				do {
 				printf("¿Que desea realizar?:\n");
 				printf("a) Introduzca r para registrarte\n");
 				printf("b) Introduzca c para comprar\n");
@@ -301,11 +300,8 @@ int main(){
 		else {
 			return 0;
 		}
-	}
+	} return 0;    //FIN DEL PROGRAMA
 	
-	
-	//FIN DEL PROGRAMA
-	return 0;
 }
 
 //A CONTINUACIÓN SE DESARROLLAN LAS FUNCIONES EMPLEADAS EN EL PROGRAMA
