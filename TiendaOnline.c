@@ -340,9 +340,9 @@ int registroOperador(struct Registro operador, int dimension){
     fclose(F2);
     
     //TRABAJAMOS CON EL VECTOR DE ESTRUCTURAS OPERADOR
-    printf("\nA continuacion, le vamos a pedir sus datos personales para proceder al registro.\n");
+    	printf("\nA continuacion, le vamos a pedir sus datos personales para proceder al registro.\n");
 	printf("\n");
-    fflush(stdin);
+    	fflush(stdin);
 	printf("Nombre: ");
 	scanf("%s", operador.nombre);
 	
@@ -370,6 +370,7 @@ int registroOperador(struct Registro operador, int dimension){
 	printf("Calle:");
 	scanf("%s", operador.calle);
 	
+	fflush(stdin);
 	printf("Portal-Piso-Puerta: ");
 	scanf("%d %d %s", &operador.portal, &operador.piso, operador.puerta); 
 	
@@ -377,17 +378,20 @@ int registroOperador(struct Registro operador, int dimension){
 	printf("Localidad: ");
 	scanf("%s", operador.localidad);
 	
+	fflush(stdin);
 	printf("Dia-Mes-Ano de nacimiento: ");
 	scanf("%d %d %d", &operador.fechaNacimiento.dia, &operador.fechaNacimiento.mes, &operador.fechaNacimiento.annyo);
-			
+	
+	fflush(stdin);		
 	printf("Telefono: ");
 	scanf("%d", &operador.tlf);
-		
+	
+	fflush(stdin);
 	printf("Numero de cuenta: ");
 	scanf("%d", &operador.numeroCuenta);
 			
 	//ABRIMOS EL FICHERO EN MODO ESCRITURA
-	F2 = fopen ("datosdeloperador.txt", "w");
+	F2 = fopen ("datosdeloperador.txt", "a");
 	
 	if (F2 == NULL){
 		printf("Fichero no encontrado\n");
@@ -473,18 +477,21 @@ int registroCliente(struct Registro cliente,int dimension){
     fflush(stdin);
     printf("Localidad: ");
     scanf("%s", cliente.localidad);
-    
+	
+    fflush(stdin);
     printf("Dia-Mes-Ano de nacimiento: ");
     scanf("%d %d %d", &cliente.fechaNacimiento.dia, &cliente.fechaNacimiento.mes, &cliente.fechaNacimiento.annyo);
-    
+	
+    fflush(stdin);
     printf("Telefono: ");
     scanf("%d", &cliente.tlf);
-    
+	
+    fflush(stdin);
     printf("Numero de cuenta: ");
     scanf("%d", &cliente.numeroCuenta);
 	
 	//ABRIMOS EL FICHERO EN MODO ESCRITURA
-    F1 = fopen("datosdelcliente.txt", "w");
+    F1 = fopen("datosdelcliente.txt", "a");
     
     if (F1 == NULL) {
         printf("No se ha podido crear el fichero\n");
