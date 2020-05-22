@@ -18,7 +18,7 @@ struct Registro{
 	char apellidos[50];
 	char email[50];
 	char contrasena[50], localidad[50], sexo[10], calle[100], puerta[5], dni[10];
-	int tlf, portal, piso, numeroCuenta, marca;
+	int tlf, portal, piso, numeroCuenta;
 	struct TFecha fechaNacimiento;
 };
 
@@ -47,7 +47,7 @@ int main(){
 	struct Registro oper;
 	struct Registro cliente;
 	FILE *f, *pfichero1, *pfichero2, *pfichero3, *pfichero4,*pfichero5;
-	char x,y;
+	char x, y;
 	int quimico;
 	struct TProducto pedido[5] = {{"AB", 10, 30}, {"BC", 20, 53}, {"CD", 30, 27}, {"DE", 40, 33}, {"EF", 50, 86}};
 	int n;
@@ -68,7 +68,7 @@ int main(){
 	
 	//DESARROLLAMOS LAS FUNCIONALIDADES DE LA TIENDA ATENDIENDO A LA OPCION ELEGIDA ANTERIORMENTE
 	
-	if (opcion == 1){ //DISTINGUIREMOS ENTRE OPERADOR Y CLIENTE 
+	if (opcion == 1){ //DISTINGUIMOS ENTRE OPERADOR Y CLIENTE 
 		printf("Por favor, indique si es operador o cliente, para ello pulse:\n");
 		printf("a) 'O' si es operador\n");
 		printf("b) 'C' si es cliente\n");
@@ -132,7 +132,7 @@ int main(){
                         }
             } while (opcion != 's' && opcion != 'a' && opcion != 'r' && opcion != 'A' &&opcion != 'S' && opcion != 'R');
             
-		}else if (tipoUsuario == 'C' || tipoUsuario == 'c'){ //CORRESPONDE A UN CLIENTE DE LA TIENDA
+		}else if (tipoUsuario == 'C' || tipoUsuario == 'c'){ //CORRESPONDE A UN CLIENTE
 			do {
 				printf("¿Que desea realizar?:\n");
 				printf("a) Introduzca r para registrarte\n");
@@ -467,7 +467,7 @@ int registroCliente(struct Registro cliente,int dimension){
         printf("No se ha podido crear el fichero\n");
     }
     
-    for (i=0; i < contador; i++) { // Escribo los datos en el fichero abierto
+    for (i=0; i < contador; i++) { // Escribo los datos en el fichero
         fprintf(F1,"%s %s %s %s %s %s %s %d %d %s %s %d %d %d %d %d\n", cliente.nombre, cliente.apellidos, 
 		cliente.contrasena, cliente.dni, cliente.email, cliente.sexo, cliente.calle, cliente.portal, cliente.piso, 
 		cliente.puerta, cliente.localidad, cliente.fechaNacimiento.dia, cliente.fechaNacimiento.mes, 
@@ -485,10 +485,9 @@ int registroCliente(struct Registro cliente,int dimension){
 
 int compraProducto (struct TProducto pedido[], int dimension){ 
 	
-	int numero = 0;
 	char codigobuscado[10];
 	int i;
-	int unidad, cantidadFinal;
+	int unidad;
 	int precioFinal;
 	char respuesta2;
 	
@@ -510,7 +509,7 @@ int compraProducto (struct TProducto pedido[], int dimension){
 				scanf("%d", &unidad);
 				fflush(stdin);
 			
-				if ((unidad >=1) && (unidad < pedido[i].cantidad)){
+				if ((unidad >= 1) && (unidad < pedido[i].cantidad)){
 					precioFinal = unidad * pedido[i].precio;
 					printf("La factura a pagar es de %d euros\n", precioFinal);
 					printf("Se le enviara el producto en un plazo de 5 dias laborables\n");
@@ -542,7 +541,6 @@ int compraProducto (struct TProducto pedido[], int dimension){
 			
 	return 0;
 }
-
 
 
 
